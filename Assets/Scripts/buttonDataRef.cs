@@ -6,7 +6,7 @@ using UnityEngine;
 public class buttonDataRef : MonoBehaviour
 {
     private Button button;
-    public Construction building;
+    public GameObject building;
 
     private void Start()
     {
@@ -15,7 +15,7 @@ public class buttonDataRef : MonoBehaviour
 
     private void Update()
     {
-      if (AvailableBuilding(transform.parent.parent.GetComponent<Hud>().resources_inv_, building.cost_))
+      if (AvailableBuilding(transform.parent.parent.GetComponent<Hud>().resources_inv_, building.GetComponent<Construction>().cost_))
       {
         button.interactable = false;
       }
