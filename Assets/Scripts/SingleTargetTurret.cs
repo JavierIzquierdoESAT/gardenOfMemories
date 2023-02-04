@@ -25,8 +25,6 @@ public class SingleTargetTurret : Construction
   // Update is called once per frame
   void Update()
   {
-    Debug.Log(enemy_buffer_.Count);
-   
     LookForTargets();
     there_are_enemies_to_shoot = (enemy_buffer_.Count > 0);
     SetTarget();

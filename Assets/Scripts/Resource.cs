@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ResourceType{
+  TypeOne,
+  TypeTwo,
+  TypeThree
+};
 public class Resource : MonoBehaviour
 {
+  public ResourceType type_ = ResourceType.TypeOne;
   public Hud hud_info_;
   public int on_pick_resources_ = 5;
   public float TimeAlive;
@@ -30,7 +36,20 @@ public class Resource : MonoBehaviour
 
     if(other.gameObject.GetComponent<CharacterMovement>() != null){
       Destroy(gameObject);
-      hud_info_.n_resources_ += on_pick_resources_;
+      switch(type_){
+        case ResourceType.TypeOne:{
+          hud_info_.resources_inv_.x += on_pick_resources_;
+          break;
+        }
+        case ResourceType.TypeTwo:{
+          hud_info_.resources_inv_.y += on_pick_resources_;
+          break;
+        }
+        case ResourceType.TypeThree:{
+          hud_info_.resources_inv_.z += on_pick_resources_;
+          break;  
+        }
+      }
     }
   }
 }

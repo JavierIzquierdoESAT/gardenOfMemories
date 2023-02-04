@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ResourceTower : Construction
 {
+  public ResourceType type_ = ResourceType.TypeOne;
   public GameObject resource_prefab_;
   public float cooldown_ = 3.0f;
   public float drop_radius_ = 2.0f;
@@ -48,6 +50,7 @@ public class ResourceTower : Construction
     
     Vector3 spawn_point = drop_point;
     GameObject go = Instantiate(resource_prefab_, spawn_point, Quaternion.identity);
+    go.GetComponent<Resource>().type_ = type_;
     yield return new WaitForSeconds(cooldown_);
     can_produce_ = true;
   }
