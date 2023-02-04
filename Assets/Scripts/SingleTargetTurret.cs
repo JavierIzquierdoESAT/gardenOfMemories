@@ -12,7 +12,7 @@ public class SingleTargetTurret : Construction
   public Transform position_of_gun_;
   public float force_;
   private bool can_shoot_ = true;
-  private List<Enemy> enemy_buffer_;
+  [SerializeField]private List<Enemy> enemy_buffer_;
   private bool there_are_enemies_to_shoot = false;
   
 
@@ -25,10 +25,11 @@ public class SingleTargetTurret : Construction
   // Update is called once per frame
   void Update()
   {
+    Debug.Log(enemy_buffer_.Count);
    
+    LookForTargets();
     there_are_enemies_to_shoot = (enemy_buffer_.Count > 0);
     SetTarget();
-    LookForTargets();
 
     if(target_ != null){
       if((target_.transform.position - position_of_gun_.position).magnitude > range_){
@@ -39,6 +40,8 @@ public class SingleTargetTurret : Construction
     if(can_shoot_ && there_are_enemies_to_shoot && target_ != null){
        StartCoroutine(ShootTarget());
     }
+
+    GarbageCollector();
   }
 
   IEnumerator ShootTarget(){
@@ -78,5 +81,13 @@ public class SingleTargetTurret : Construction
   public void UnlinkTarget(){
     target_ = null;
     enemy_buffer_.RemoveAt(0);
+  }
+
+  void GarbageCollector(){
+    for(int i = 0; i < enemy_buffer_.Count; ++i){
+      if(enemy_buffer_[i] == null){
+        enemy_buffer_.RemoveAt(i);
+      }
+    }
   }
 }

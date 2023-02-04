@@ -50,29 +50,32 @@ public class Enemy : MonoBehaviour
   }
 
   void OnTriggerEnter(Collider other){
-    Tile tile_collider = other.GetComponentInParent<Tile>();
-    Core core_collider = other.GetComponentInParent<Core>();
-    Bullet bullet_collider = other.GetComponentInParent<Bullet>();
-    if(tile_collider != null){
-      switch(tile_collider.next_direction_){
-        case TurnDirection.Left:{
-          RotateLeft();
-          break;
+    if(!other.CompareTag("IgnoreEnemy")){
+
+      Tile tile_collider = other.GetComponentInParent<Tile>();
+      Core core_collider = other.GetComponentInParent<Core>();
+      Bullet bullet_collider = other.GetComponentInParent<Bullet>();
+      if(tile_collider != null){
+        switch(tile_collider.next_direction_){
+          case TurnDirection.Left:{
+            RotateLeft();
+            break;
+          }
+          case TurnDirection.Right:{
+            RotateRight();
+            break;
+          }
         }
-        case TurnDirection.Right:{
-          RotateRight();
-          break;
-        }
+    }
+
+      if(core_collider != null){
+        core_collider.damageCore(damagePoints_);
+        die();
       }
-    }
 
-    if(core_collider != null){
-      core_collider.damageCore(damagePoints_);
-      die();
-    }
-
-    if(bullet_collider != null){
-      Destroy(bullet_collider.gameObject);
+      if(bullet_collider != null){
+        Destroy(bullet_collider.gameObject);
+      }
     }
   }
 }

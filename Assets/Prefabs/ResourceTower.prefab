@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3407031587864217071}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spawn_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3425558246400299851}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spawn_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 5099937278315305220}
   - component: {fileID: 5995057719157693439}
   - component: {fileID: 3842828698790060292}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ResourceTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,6 +179,8 @@ MonoBehaviour:
   cost_: 10
   resource_prefab_: {fileID: 1414800479229659838, guid: de2198769b4bc51459652780f1bd2b19, type: 3}
   cooldown_: 3
+  drop_radius_: 0.8
+  inner_radius_: 0.2
   spawn_points_:
   - {fileID: 3425558246400299851}
   - {fileID: 7884420012233050866}
@@ -193,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7884420012233050866}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spawn_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8073207255748989875}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spawn_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
