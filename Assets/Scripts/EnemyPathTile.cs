@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum TurnDirection{
-  Left,
-  Right,
-  Forward
-};
+
 public class EnemyPathTile : Tile
 {
   public TurnDirection next_direction_ = TurnDirection.Forward;
@@ -28,11 +24,11 @@ public class EnemyPathTile : Tile
       //Enemy passed through the tile
       switch(next_direction_){
         case TurnDirection.Left:{
-          
+          collision.gameObject.GetComponent<Enemy>().RotateLeft();
           break;
         }
         case TurnDirection.Right:{
-
+          collision.gameObject.GetComponent<Enemy>().RotateRight();
           break;
         }
       }

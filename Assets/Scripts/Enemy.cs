@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+
 
 public class Enemy : MonoBehaviour
 {
   private Transform tr_;
-  public NavMeshAgent agent_;
   // Start is called before the first frame update
   void Start()
   {
@@ -16,14 +15,18 @@ public class Enemy : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-      
+    MoveForward();
   }
 
   public void RotateLeft(){
-
+    tr_.Rotate(new Vector3(0.0f, -90.0f, 0.0f), Space.Self);
   }
 
   public void RotateRight(){
+    tr_.Rotate(new Vector3(0.0f, 90.0f, 0.0f), Space.Self);
+  }
 
+  public void MoveForward(){
+    tr_.Translate(0.001f * tr_.forward, Space.Self);
   }
 }
