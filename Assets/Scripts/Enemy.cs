@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+  public float speed_ = 1.0f;
   private Transform tr_;
+  public int damagePoints_ = 2;
   // Start is called before the first frame update
   void Start()
   {
@@ -27,11 +29,12 @@ public class Enemy : MonoBehaviour
   }
 
   public void MoveForward(){
-    tr_.Translate(0.001f * tr_.forward, Space.Self);
+    tr_.Translate(speed_ * 0.001f * tr_.forward, Space.Self);
   }
 
   void OnTriggerEnter(Collider other){
     Tile tile_collider = other.GetComponentInParent<Tile>();
+    Core core_collider = other.GetComponentInParent<Core>();
     if(tile_collider != null){
       switch(tile_collider.next_direction_){
         case TurnDirection.Left:{
@@ -43,6 +46,11 @@ public class Enemy : MonoBehaviour
           break;
         }
       }
+    }
+
+    if(core_collider != null){
+      core_collider.damageCore(damagePoints_);
+      Destroy(gameObject);
     }
   }
 }
