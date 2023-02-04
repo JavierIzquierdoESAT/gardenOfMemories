@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Construction : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
+  public int damage_;
   // Start is called before the first frame update
   void Start()
   {
@@ -15,4 +16,6 @@ public class Construction : MonoBehaviour
   {
       
   }
+
+
 }

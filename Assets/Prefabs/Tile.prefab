@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4937345989614013221}
   - component: {fileID: 3812335049367992416}
   - component: {fileID: 4462571854246442062}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3509064582071395089}
   - component: {fileID: 8495882272149872477}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7534706707597860563}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AttachTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 4458610149606864294}
   - component: {fileID: 4460178277953517804}
   - component: {fileID: 8708792291591502666}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TileCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

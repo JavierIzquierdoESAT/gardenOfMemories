@@ -78,5 +78,6 @@ public class Spawner : MonoBehaviour
     }
     yield return new WaitForSeconds(time);
     can_spawn_ = true;
+    quantity_--;
   }
 }

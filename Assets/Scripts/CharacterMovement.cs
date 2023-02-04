@@ -11,6 +11,8 @@ public class CharacterMovement : MonoBehaviour
     //private Tile interactionTile;
 
     public Rigidbody rb;
+    public Hud hud_info_;
+
 
     float horizontalInput;
     float verticalInput;
@@ -21,6 +23,7 @@ public class CharacterMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         isMenuOpen= false;
+        menu.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -58,4 +61,6 @@ public class CharacterMovement : MonoBehaviour
         isMenuOpen= false;
         menu.gameObject.SetActive(false);
     }
+
+    
 }

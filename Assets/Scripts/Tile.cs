@@ -11,7 +11,9 @@ public enum TurnDirection{
 public enum TileType{
   Buildable,
   NotBuildable,
-  EnemyPath
+  EnemyPath,
+  Bridge,
+  
 };
 
 public class Tile : MonoBehaviour
@@ -35,19 +37,3 @@ public class Tile : MonoBehaviour
 
   
 }
-
-/*
-if(other.gameObject.GetComponent<Enemy>() != null){
-      //Enemy passed through the tile
-      switch(next_direction_){
-        case TurnDirection.Left:{
-          other.gameObject.GetComponent<Enemy>().RotateLeft();
-          break;
-        }
-        case TurnDirection.Right:{
-          other.gameObject.GetComponent<Enemy>().RotateRight();
-          break;
-        }
-      }
-    }
-*/
