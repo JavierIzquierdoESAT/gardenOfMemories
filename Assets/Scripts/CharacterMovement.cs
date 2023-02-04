@@ -19,7 +19,7 @@ public class CharacterMovement : MonoBehaviour
     public Hud hud_info_;
 
     private Tile interactionTile;
-    public List<Construction> buildings;
+    public List<GameObject> buildings;
 
     bool isMenuOpen;
     bool isDemolishOpen;
@@ -33,7 +33,7 @@ public class CharacterMovement : MonoBehaviour
 
         foreach (Transform child in menu.transform)
         {
-            buildings.Add(child.gameObject.GetComponent<buttonDataRef>().building);
+            buildings.Add(child.gameObject.GetComponent<buttonDataRef>().building.gameObject);
         }
     }
 
@@ -114,10 +114,10 @@ public class CharacterMovement : MonoBehaviour
 
     public void SpawnBuilding(int type)
     {
-        if(AvailableBuilding(hud_info_.resources_inv_, buildings[type].cost_))
+        if(AvailableBuilding(hud_info_.resources_inv_, buildings[type].GetComponent<Construction>().cost_))
         {
-            interactionTile.attachedBuilding = Instantiate(buildings[type], interactionTile.gameObject.transform);
-            hud_info_.resources_inv_ -= buildings[type].cost_;
+            interactionTile.attachedBuilding = Instantiate(buildings[type], interactionTile.gameObject.transform).GetComponent<Construction>();
+            hud_info_.resources_inv_ -= interactionTile.attachedBuilding.cost_;
             showBuildMenu(false);
         }
     }
