@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0a19760b2069a4b49a4b92e398790b2c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed_: 9
   damagePoints_: 5
-  health_: 10
+  health_: 6
   shooting_tower_: {fileID: 0}
 --- !u!54 &2100540966035883921
 Rigidbody:
