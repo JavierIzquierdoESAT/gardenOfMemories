@@ -23,7 +23,6 @@ public class Tile : MonoBehaviour
   public Collider collider_;
   private Transform tr_;
 
-  [HideInInspector]
   public Construction attachedBuilding;
   // Start is called before the first frame update
   void Start()

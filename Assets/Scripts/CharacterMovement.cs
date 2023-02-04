@@ -80,6 +80,22 @@ public class CharacterMovement : MonoBehaviour
             {
                 SpawnBuilding(1);
             }
+            if (Input.GetButtonDown("Build3"))
+            {
+                SpawnBuilding(2);
+            }
+            if (Input.GetButtonDown("Build4"))
+            {
+                SpawnBuilding(3);
+            }
+            if (Input.GetButtonDown("Build5"))
+            {
+                SpawnBuilding(4);
+            }
+            if (Input.GetButtonDown("Build6"))
+            {
+                SpawnBuilding(5);
+            }
             if (Input.GetButtonDown("Cancel"))
             {
                 showBuildMenu(false);
@@ -117,7 +133,7 @@ public class CharacterMovement : MonoBehaviour
     }
     public void Demolish()
     {
-        hud_info_.resources_inv_ += interactionTile.attachedBuilding.cost_ / 2;
+        //hud_info_.resources_inv_ += interactionTile.attachedBuilding.cost_ / 2;
         Destroy(interactionTile.attachedBuilding.gameObject);
         interactionTile.attachedBuilding = null;
         showDemolishMenu(false);
