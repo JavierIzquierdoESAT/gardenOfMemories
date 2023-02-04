@@ -19,11 +19,11 @@ public class Enemy : MonoBehaviour
   }
 
   public void RotateLeft(){
-    tr_.Rotate(new Vector3(0.0f, -90.0f, 0.0f), Space.Self);
+    tr_.Rotate(new Vector3(0.0f, -45.0f, 0.0f), Space.Self);
   }
 
   public void RotateRight(){
-    tr_.Rotate(new Vector3(0.0f, 90.0f, 0.0f), Space.Self);
+    tr_.Rotate(new Vector3(0.0f, 45.0f, 0.0f), Space.Self);
   }
 
   public void MoveForward(){
@@ -31,6 +31,18 @@ public class Enemy : MonoBehaviour
   }
 
   void OnTriggerEnter(Collider other){
-    Debug.Log("Collision");
+    Tile tile_collider = other.GetComponentInParent<Tile>();
+    if(tile_collider != null){
+      switch(tile_collider.next_direction_){
+        case TurnDirection.Left:{
+          RotateLeft();
+          break;
+        }
+        case TurnDirection.Right:{
+          RotateRight();
+          break;
+        }
+      }
+    }
   }
 }
