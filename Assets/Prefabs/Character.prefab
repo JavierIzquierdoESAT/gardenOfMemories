@@ -248,9 +248,8 @@ MonoBehaviour:
   maxSpeed: 3
   rotationSpeed: 5
   mesh: {fileID: 3192386451144652282}
-  buildings:
-  - {fileID: 9140804354696837544, guid: d5f3ca73795d51044879d9f1798e8a8c, type: 3}
-  - {fileID: 3842828698790060292, guid: 829de31cd07e2964d95ad4c248d7defc, type: 3}
   menu: {fileID: 0}
+  demolishMenu: {fileID: 0}
   rb: {fileID: 252626836917544026}
   hud_info_: {fileID: 0}
+  buildings: []

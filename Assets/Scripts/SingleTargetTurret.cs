@@ -7,7 +7,6 @@ public class SingleTargetTurret : Construction
   public float attackSpeed_;
   public float attackDamage_;
   public float range_;
-  public int cost_;
   public GameObject bullet_;
   public Enemy target_ = null;
   public Transform position_of_gun_;

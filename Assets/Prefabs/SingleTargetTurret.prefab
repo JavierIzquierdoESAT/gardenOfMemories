@@ -129,11 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af1e160b2b47b94cbf3980bb1574f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost_: 10
   attackSpeed_: 2
   attackDamage_: 2
   range_: 10
-  resourcesPerSecond_: 0
-  cost_: 0
   bullet_: {fileID: 7173744077276944100, guid: 7a748117e59272845b3cc70bd7594023, type: 3}
   target_: {fileID: 0}
   position_of_gun_: {fileID: 2142413807158810419}

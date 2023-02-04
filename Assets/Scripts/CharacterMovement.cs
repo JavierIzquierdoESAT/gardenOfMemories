@@ -10,23 +10,31 @@ public class CharacterMovement : MonoBehaviour
     public float rotationSpeed;
 
     public GameObject mesh;
-    public List<Construction> buildings;
+
     public CanvasRenderer menu;
+    public CanvasRenderer demolishMenu;
 
     //private Tile interactionTile;
     public Rigidbody rb;
     public Hud hud_info_;
 
     private Tile interactionTile;
+    public List<Construction> buildings;
 
     bool isMenuOpen;
+    bool isDemolishOpen;
     // Start is called before the first frame update
     void Start()
     {
-        isMenuOpen= false;
-        menu.gameObject.SetActive(false);
+        showBuildMenu(false);
+        showDemolishMenu(false);
 
         rb = GetComponent<Rigidbody>();
+
+        foreach (Transform child in menu.transform)
+        {
+            buildings.Add(child.gameObject.GetComponent<buttonDataRef>().building);
+        }
     }
 
     // Update is called once per frame
@@ -52,8 +60,11 @@ public class CharacterMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && !isMenuOpen && interactionTile != null)
         {
-            if(interactionTile.type_ == TileType.Buildable) {
+            if(interactionTile.type_ == TileType.Buildable && interactionTile.attachedBuilding == null) {
                 showBuildMenu(true);
+            }
+            else if(interactionTile.type_ == TileType.Buildable){
+                showDemolishMenu(true);
             }
         }
 
@@ -73,15 +84,32 @@ public class CharacterMovement : MonoBehaviour
             }
         }
 
+        if(isDemolishOpen)
+        {
+            if (Input.GetButtonDown("Cancel"))
+            {
+                showDemolishMenu(false);
+            }
+        }
+
     }
 
     public void SpawnBuilding(int type)
     {
-        Debug.Log(interactionTile);
-        Instantiate(buildings[type], interactionTile.gameObject.transform);
-        showBuildMenu(false);
+        if(hud_info_.n_resources_ >= buildings[type].cost_)
+        {
+            interactionTile.attachedBuilding = Instantiate(buildings[type], interactionTile.gameObject.transform);
+            hud_info_.n_resources_ -= buildings[type].cost_;
+            showBuildMenu(false);
+        }
     }
-
+    public void Demolish()
+    {
+        hud_info_.n_resources_ += interactionTile.attachedBuilding.cost_ / 2;
+        Destroy(interactionTile.attachedBuilding.gameObject);
+        interactionTile.attachedBuilding = null;
+        showDemolishMenu(false);
+    }
 
     private void showBuildMenu(bool Activate)
     {
@@ -97,5 +125,21 @@ public class CharacterMovement : MonoBehaviour
         }
 
     }
-    
+
+    private void showDemolishMenu(bool Activate)
+    {
+        if (Activate)
+        {
+            isDemolishOpen = true;
+            demolishMenu.gameObject.SetActive(true);
+        }
+        else
+        {
+            isDemolishOpen = false;
+            demolishMenu.gameObject.SetActive(false);
+        }
+    }
+
+
+
 }

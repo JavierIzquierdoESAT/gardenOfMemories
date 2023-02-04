@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Construction : MonoBehaviour
 {
-  // Start is called before the first frame update
-  void Start()
+  public int cost_;
+    // Start is called before the first frame update
+    void Start()
   {
       
   }

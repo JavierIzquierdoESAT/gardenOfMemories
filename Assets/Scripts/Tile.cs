@@ -22,6 +22,9 @@ public class Tile : MonoBehaviour
   public TurnDirection next_direction_ = TurnDirection.Forward;
   public Collider collider_;
   private Transform tr_;
+
+  [HideInInspector]
+  public Construction attachedBuilding;
   // Start is called before the first frame update
   void Start()
   {

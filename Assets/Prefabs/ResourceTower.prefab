@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed84909dad6ac294794a424c06ec0df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost_: 10
   resource_prefab_: {fileID: 1414800479229659838, guid: de2198769b4bc51459652780f1bd2b19, type: 3}
   cooldown_: 3
   spawn_points_:
