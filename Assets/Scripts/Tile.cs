@@ -32,9 +32,6 @@ public class Tile : MonoBehaviour
   
   }
 
-  void ChangeMaterial(Material mat){
-    transform.GetChild(0).gameObject.GetComponent<Renderer>().material = mat;
-  }
 
   void OnCollisionEnter(Collision collision){
     if(collision.gameObject.GetComponent<Enemy>() != null){
