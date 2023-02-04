@@ -47,6 +47,7 @@ public class SingleTargetTower : Construction
     can_shoot_ = false;
     GameObject go = Instantiate(bullet_, position_of_gun_.position, Quaternion.identity);
     go.GetComponent<Rigidbody>().AddForce(force_ * (target_.transform.position - position_of_gun_.position).normalized, ForceMode.Impulse);
+    go.GetComponent<Bullet>().target_ = target_;
     yield return new WaitForSeconds(attackSpeed_);
     can_shoot_ = true;
     

@@ -72,7 +72,6 @@ public class Enemy : MonoBehaviour
     }
 
     if(bullet_collider != null){
-      receiveDamage(bullet_collider.damage_);
       Destroy(bullet_collider.gameObject);
     }
   }
