@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleTargetTower : Construction
+public class SingleTargetTurret : Construction
 {
   public float attackSpeed_;
   public float attackDamage_;
   public float range_;
-  public int resourcesPerSecond_;
   public int cost_;
   public GameObject bullet_;
   public Enemy target_ = null;
@@ -28,6 +27,7 @@ public class SingleTargetTower : Construction
   void Update()
   {
    
+    there_are_enemies_to_shoot = (enemy_buffer_.Count > 0);
     SetTarget();
     LookForTargets();
 
@@ -37,10 +37,9 @@ public class SingleTargetTower : Construction
       }
     }
     
-    if(can_shoot_ && there_are_enemies_to_shoot){
+    if(can_shoot_ && there_are_enemies_to_shoot && target_ != null){
        StartCoroutine(ShootTarget());
     }
-    there_are_enemies_to_shoot = (enemy_buffer_.Count > 0);
   }
 
   IEnumerator ShootTarget(){

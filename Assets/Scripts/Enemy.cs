@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
   private Transform tr_;
   public int damagePoints_ = 2;
   public int health_ = 10;
-  public SingleTargetTower shooting_tower_ = null;
+  public SingleTargetTurret shooting_tower_ = null;
   // Start is called before the first frame update
   void Start()
   {
