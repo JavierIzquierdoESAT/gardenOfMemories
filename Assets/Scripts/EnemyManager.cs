@@ -12,6 +12,8 @@ public class EnemyManager : MonoBehaviour
   private bool level_finished_ = false;
   private bool transition_ = false;
   private int max_waves_ = 0;
+  public float initial_timer_ = 3.0f;
+  private bool start_ = false;
   // Start is called before the first frame update
   void Start()
   {
@@ -22,7 +24,11 @@ public class EnemyManager : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if(!level_finished_ && !transition_){
+    if(start_){
+      spawners_[0].enabled_ = true;
+      start_ = false;
+    }
+    if(!level_finished_ && !transition_ && start_){
       if(spawners_[spawn_index_].quantity_ <= 0){
         StartCoroutine(NextWave());
       }
@@ -59,6 +65,11 @@ public class EnemyManager : MonoBehaviour
   }
 
   void StartWaves(){
-    spawners_[0].enabled_ = true;
+    StartCoroutine(InitialTimer());
+  }
+
+  IEnumerator InitialTimer(){
+    yield return new WaitForSeconds(initial_timer_);
+    start_ = true;
   }
 }

@@ -124,7 +124,6 @@ public class CharacterMovement : MonoBehaviour
 
     public bool AvailableBuilding(Vector3 rs1, Vector3 rs2){
       Vector3 tmp_inv = rs1 - rs2;
-      Debug.Log(tmp_inv);
       if(tmp_inv.x < 0.0f || tmp_inv.y < 0.0f || tmp_inv.z < 0.0f){
         return false;
       }else{
