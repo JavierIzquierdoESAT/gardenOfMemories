@@ -8,10 +8,12 @@ public class CharacterMovement : MonoBehaviour
 
     public List<Construction> buildings;
     public CanvasRenderer menu;
-    //private Tile interactionTile;
 
+    //private Tile interactionTile;
     public Rigidbody rb;
     public Hud hud_info_;
+
+    private Tile interactionTile;
 
 
     float horizontalInput;
@@ -21,24 +23,36 @@ public class CharacterMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         isMenuOpen= false;
         menu.gameObject.SetActive(false);
+
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        RaycastHit hit;
+
+        if (isMenuOpen == false && Physics.Raycast(transform.position, transform.forward, out hit, 100, LayerMask.GetMask("TileVolume"), QueryTriggerInteraction.Collide))
+        {
+            interactionTile = hit.transform.parent.gameObject.GetComponent<Tile>();
+        }
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Vector3 movement = new Vector3(maxSpeed * input.x, 0, maxSpeed * input.y);
         movement = Vector3.ClampMagnitude(movement, maxSpeed);
         movement *= Time.deltaTime;
         transform.Translate(movement, Space.World);
 
-        if (Input.GetButtonDown("Fire1") && !isMenuOpen)
+
+
+
+        if (Input.GetButtonDown("Fire1") && !isMenuOpen && interactionTile != null)
         {
-            isMenuOpen= true;
-            menu.gameObject.SetActive(true);
+            if(interactionTile.type_ == TileType.Buildable) {
+                isMenuOpen = true;
+                menu.gameObject.SetActive(true);
+            }
         }
 
         if (isMenuOpen)
@@ -57,7 +71,8 @@ public class CharacterMovement : MonoBehaviour
 
     public void SpawnBuilding(int type)
     {
-        Instantiate(buildings[type], gameObject.transform);
+        Debug.Log(interactionTile);
+        Instantiate(buildings[type], interactionTile.gameObject.transform);
         isMenuOpen= false;
         menu.gameObject.SetActive(false);
     }
