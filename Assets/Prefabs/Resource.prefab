@@ -143,3 +143,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hud_info_: {fileID: 0}
   on_pick_resources_: 5
+  TimeAlive: 20
