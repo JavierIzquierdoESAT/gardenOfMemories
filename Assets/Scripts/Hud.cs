@@ -6,8 +6,10 @@ using TMPro;
 
 public class Hud : MonoBehaviour
 {
-  public TextMeshProUGUI resource_number_;
-  public int n_resources_ = 0;
+  public TextMeshProUGUI resource_one_;
+  public TextMeshProUGUI resource_two_;
+  public TextMeshProUGUI resource_three_;
+  public Vector3 resources_inv_;
   // Start is called before the first frame update
   void Start()
   {
@@ -17,7 +19,9 @@ public class Hud : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    resource_number_.text = n_resources_.ToString();
+    resource_one_.text = resources_inv_.x.ToString();
+    resource_two_.text = resources_inv_.y.ToString();
+    resource_three_.text = resources_inv_.z.ToString();
   }
 
  

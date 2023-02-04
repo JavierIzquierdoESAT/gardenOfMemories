@@ -96,16 +96,26 @@ public class CharacterMovement : MonoBehaviour
 
     public void SpawnBuilding(int type)
     {
-        if(hud_info_.n_resources_ >= buildings[type].cost_)
+        if(AvailableBuilding(hud_info_.resources_inv_, buildings[type].cost_))
         {
             interactionTile.attachedBuilding = Instantiate(buildings[type], interactionTile.gameObject.transform);
-            hud_info_.n_resources_ -= buildings[type].cost_;
+            hud_info_.resources_inv_ -= buildings[type].cost_;
             showBuildMenu(false);
         }
     }
+
+    public bool AvailableBuilding(Vector3 rs1, Vector3 rs2){
+      Vector3 tmp_inv = rs1 - rs2;
+      Debug.Log(tmp_inv);
+      if(tmp_inv.x < 0.0f || tmp_inv.y < 0.0f || tmp_inv.z < 0.0f){
+        return false;
+      }else{
+        return true;
+      }
+    }
     public void Demolish()
     {
-        hud_info_.n_resources_ += interactionTile.attachedBuilding.cost_ / 2;
+        hud_info_.resources_inv_ += interactionTile.attachedBuilding.cost_ / 2;
         Destroy(interactionTile.attachedBuilding.gameObject);
         interactionTile.attachedBuilding = null;
         showDemolishMenu(false);

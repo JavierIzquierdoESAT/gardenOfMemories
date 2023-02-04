@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af1e160b2b47b94cbf3980bb1574f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost_: 10
+  cost_: {x: 0, y: 5, z: 3}
   attackSpeed_: 2
   attackDamage_: 2
   range_: 10
@@ -137,6 +137,7 @@ MonoBehaviour:
   target_: {fileID: 0}
   position_of_gun_: {fileID: 2142413807158810419}
   force_: 15
+  enemy_buffer_: []
 --- !u!65 &5995057719157693439
 BoxCollider:
   m_ObjectHideFlags: 0
