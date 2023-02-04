@@ -770,6 +770,7 @@ GameObject:
   - component: {fileID: 512362980}
   - component: {fileID: 512362979}
   - component: {fileID: 512362978}
+  - component: {fileID: 512362984}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -819,7 +820,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512362977}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -890,6 +891,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &512362984
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512362977}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &582193262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1276,6 +1293,10 @@ PrefabInstance:
     - target: {fileID: 8495882272149872477, guid: 7cab4e3c704b7a84abf03d34ba4ac55f, type: 3}
       propertyPath: type_
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708792291591502666, guid: 7cab4e3c704b7a84abf03d34ba4ac55f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cab4e3c704b7a84abf03d34ba4ac55f, type: 3}

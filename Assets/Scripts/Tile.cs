@@ -33,19 +33,21 @@ public class Tile : MonoBehaviour
   }
 
 
-  void OnCollisionEnter(Collision collision){
-    if(collision.gameObject.GetComponent<Enemy>() != null){
+  
+}
+
+/*
+if(other.gameObject.GetComponent<Enemy>() != null){
       //Enemy passed through the tile
       switch(next_direction_){
         case TurnDirection.Left:{
-          collision.gameObject.GetComponent<Enemy>().RotateLeft();
+          other.gameObject.GetComponent<Enemy>().RotateLeft();
           break;
         }
         case TurnDirection.Right:{
-          collision.gameObject.GetComponent<Enemy>().RotateRight();
+          other.gameObject.GetComponent<Enemy>().RotateRight();
           break;
         }
       }
     }
-  }
-}
+*/

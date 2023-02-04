@@ -29,4 +29,8 @@ public class Enemy : MonoBehaviour
   public void MoveForward(){
     tr_.Translate(0.001f * tr_.forward, Space.Self);
   }
+
+  void OnTriggerEnter(Collider other){
+    Debug.Log("Collision");
+  }
 }
