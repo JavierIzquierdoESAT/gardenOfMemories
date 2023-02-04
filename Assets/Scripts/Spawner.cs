@@ -2,11 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyType{
-  Type1,
-  Type2,
-  Type3
-};
 
 public enum Direction{
   Forward,
@@ -19,12 +14,10 @@ public class Spawner : MonoBehaviour
   bool can_spawn_ = true;
   private Transform tr_;
   public Direction direction_relative_to_z_axis_ = Direction.Forward;
-  public GameObject enemy_prefab_1;
-  public GameObject enemy_prefab_2;
-  public GameObject enemy_prefab_3;
-  public EnemyType type_;
+  public GameObject enemy_prefab_;
   public int quantity_;
   public float frequency_in_seconds_;
+  public bool enabled_ = false;
   void Start()
   {
     tr_ = GetComponent<Transform>();
@@ -50,31 +43,17 @@ public class Spawner : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if(can_spawn_ && quantity_ > 0){
+    if(can_spawn_ && quantity_ > 0 && enabled_){
       StartCoroutine(SpawnEnemy(frequency_in_seconds_));
     }
   }
 
   IEnumerator SpawnEnemy(float time){
     can_spawn_ = false;
-    GameObject prefab = null;
-    switch(type_){
-      case EnemyType.Type1:{
-        prefab = enemy_prefab_1;
-        break;
-      }
-      case EnemyType.Type2:{
-        prefab = enemy_prefab_1;
-        break;
-      }
-      case EnemyType.Type3:{
-        prefab = enemy_prefab_1;
-        break;
-      }
-    }
-    if(prefab != null){
+
+    if(enemy_prefab_ != null){
       
-      Instantiate(prefab, new Vector3(tr_.position.x, 0.35f, tr_.position.z), tr_.rotation);
+      Instantiate(enemy_prefab_, new Vector3(tr_.position.x, 0.35f, tr_.position.z), tr_.rotation);
     }
     yield return new WaitForSeconds(time);
     can_spawn_ = true;
