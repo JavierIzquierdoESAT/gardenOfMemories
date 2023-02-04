@@ -55,7 +55,9 @@ public class CharacterMovement : MonoBehaviour
         Debug.DrawRay(transform.position, mesh.transform.forward.normalized);
         if (isMenuOpen == false && Physics.Raycast(transform.position, mesh.transform.forward.normalized, out hit, 100, LayerMask.GetMask("TileVolume"), QueryTriggerInteraction.Collide))
         {
+            if(interactionTile!=null) interactionTile.GetComponent<Outline>().enabled = false;
             interactionTile = hit.transform.parent.gameObject.GetComponent<Tile>();
+            interactionTile.GetComponent<Outline>().enabled = true;
         }
 
         if (Input.GetButtonDown("Fire1") && !isMenuOpen && interactionTile != null)
