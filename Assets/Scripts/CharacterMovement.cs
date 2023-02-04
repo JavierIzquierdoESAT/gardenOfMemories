@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.XR;
 
 public class CharacterMovement : MonoBehaviour
 {
     public float maxSpeed;
+    public float rotationSpeed;
 
+    public GameObject mesh;
     public List<Construction> buildings;
     public CanvasRenderer menu;
 
@@ -15,10 +19,6 @@ public class CharacterMovement : MonoBehaviour
 
     private Tile interactionTile;
 
-
-    float horizontalInput;
-    float verticalInput;
-    float speed;
     bool isMenuOpen;
     // Start is called before the first frame update
     void Start()
@@ -34,24 +34,26 @@ public class CharacterMovement : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (isMenuOpen == false && Physics.Raycast(transform.position, transform.forward, out hit, 100, LayerMask.GetMask("TileVolume"), QueryTriggerInteraction.Collide))
+        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector3 movement = new Vector3(maxSpeed * input.x, 0, maxSpeed * input.y);
+        movement = Vector3.ClampMagnitude(movement, maxSpeed) * Time.deltaTime;
+        transform.Translate(movement, Space.Self);
+        
+        if (movement.magnitude > 0)
+        {
+            mesh.transform.rotation = Quaternion.Slerp(mesh.transform.rotation, Quaternion.LookRotation(movement.normalized), Time.deltaTime * rotationSpeed);
+        }
+        Vector3 tst = transform.position + mesh.transform.forward.normalized;
+        Debug.DrawRay(transform.position, mesh.transform.forward.normalized);
+        if (isMenuOpen == false && Physics.Raycast(transform.position, mesh.transform.forward.normalized, out hit, 100, LayerMask.GetMask("TileVolume"), QueryTriggerInteraction.Collide))
         {
             interactionTile = hit.transform.parent.gameObject.GetComponent<Tile>();
         }
-        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        Vector3 movement = new Vector3(maxSpeed * input.x, 0, maxSpeed * input.y);
-        movement = Vector3.ClampMagnitude(movement, maxSpeed);
-        movement *= Time.deltaTime;
-        transform.Translate(movement, Space.World);
-
-
-
 
         if (Input.GetButtonDown("Fire1") && !isMenuOpen && interactionTile != null)
         {
             if(interactionTile.type_ == TileType.Buildable) {
-                isMenuOpen = true;
-                menu.gameObject.SetActive(true);
+                showBuildMenu(true);
             }
         }
 
@@ -65,6 +67,10 @@ public class CharacterMovement : MonoBehaviour
             {
                 SpawnBuilding(1);
             }
+            if (Input.GetButtonDown("Cancel"))
+            {
+                showBuildMenu(false);
+            }
         }
 
     }
@@ -73,9 +79,23 @@ public class CharacterMovement : MonoBehaviour
     {
         Debug.Log(interactionTile);
         Instantiate(buildings[type], interactionTile.gameObject.transform);
-        isMenuOpen= false;
-        menu.gameObject.SetActive(false);
+        showBuildMenu(false);
     }
 
+
+    private void showBuildMenu(bool Activate)
+    {
+        if(Activate)
+        {
+            isMenuOpen = true;
+            menu.gameObject.SetActive(true);
+        }
+        else
+        {
+            isMenuOpen = false;
+            menu.gameObject.SetActive(false);
+        }
+
+    }
     
 }
