@@ -6,16 +6,21 @@ public class CharacterMovement : MonoBehaviour
 {
     public float maxSpeed;
 
+    public List<Construction> buildings;
+    public CanvasRenderer menu;
+    //private Tile interactionTile;
 
     public Rigidbody rb;
 
     float horizontalInput;
     float verticalInput;
     float speed;
+    bool isMenuOpen;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        isMenuOpen= false;
     }
 
     // Update is called once per frame
@@ -27,10 +32,30 @@ public class CharacterMovement : MonoBehaviour
         movement *= Time.deltaTime;
         transform.Translate(movement, Space.World);
 
-        if (Input.GetButtonDown("Fire1")){
-            //Display Menu
-            
-            buildingList[n].Instantiate(tile.spawnSpot);
+        if (Input.GetButtonDown("Fire1") && !isMenuOpen)
+        {
+            isMenuOpen= true;
+            menu.gameObject.SetActive(true);
         }
+
+        if (isMenuOpen)
+        {
+            if (Input.GetButtonDown("Build1"))
+            {
+                SpawnBuilding(0);
+            }
+            if (Input.GetButtonDown("Build2"))
+            {
+                SpawnBuilding(1);
+            }
+        }
+
+    }
+
+    public void SpawnBuilding(int type)
+    {
+        Instantiate(buildings[type], gameObject.transform);
+        isMenuOpen= false;
+        menu.gameObject.SetActive(false);
     }
 }
