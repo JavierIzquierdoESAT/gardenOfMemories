@@ -69,9 +69,9 @@ public class SingleTargetTurret : Construction
 
     if(animator != null)
     {
-            Debug.Log("disparo");
         attacking = true;
         animator.SetBool("attacking", attacking);
+            timer = attackAnimTime;
     }
       
     if(anim != null)

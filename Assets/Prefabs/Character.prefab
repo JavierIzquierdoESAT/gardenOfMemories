@@ -164,7 +164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 3
   rotationSpeed: 5
-  mesh: {fileID: 0}
+  animator_: {fileID: 1130845994}
+  mesh: {fileID: 919132148775577876}
   menu: {fileID: 0}
   demolishMenu: {fileID: 0}
   rb: {fileID: 252626836917544026}
