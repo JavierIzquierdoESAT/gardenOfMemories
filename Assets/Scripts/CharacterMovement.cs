@@ -69,6 +69,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && !isMenuOpen && interactionTile != null)
         {
+            Debug.Log("CLICK");
             if(interactionTile.type_ == TileType.Buildable && interactionTile.attachedBuilding == null) {
                 showBuildMenu(true);
             }

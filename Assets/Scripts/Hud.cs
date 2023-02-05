@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Hud : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class Hud : MonoBehaviour
     resource_two_.text = resources_inv_.y.ToString();
     resource_three_.text = resources_inv_.z.ToString();
     core_status_.text = core_health_.ToString();
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
   }
 
  

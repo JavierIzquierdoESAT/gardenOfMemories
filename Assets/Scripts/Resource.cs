@@ -25,12 +25,15 @@ public class Resource : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-        aliveTimer -= Time.deltaTime;
+    aliveTimer -= Time.deltaTime;
     if (aliveTimer <= 0)
     {
       Destroy(gameObject);
     }
-  }
+
+    /*transform.up = Camera.main.transform.position - transform.position;
+    transform.forward = -Camera.main.transform.up;*/
+    }
 
   void OnTriggerEnter(Collider other){
 
