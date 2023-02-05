@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed84909dad6ac294794a424c06ec0df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost_: {x: 5, y: 3, z: 0}
+  cost_: {x: 15, y: 0, z: 0}
   type_: 2
   resource_prefab_: {fileID: 1414800479229659838, guid: 0ebe2c5861fc2bc4d9291961b7f8ddd7, type: 3}
   cooldown_: 3

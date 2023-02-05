@@ -28,6 +28,8 @@ public class CharacterMovement : MonoBehaviour
     bool isDemolishOpen;
     public AudioManager audio_manager_;
 
+    const float inputTimer = 0.3f;
+    float timer = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,7 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer -= Time.deltaTime;
         RaycastHit hit;
 
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -65,20 +68,19 @@ public class CharacterMovement : MonoBehaviour
         Debug.DrawRay(transform.position, mesh.transform.forward.normalized);
         if (isMenuOpen == false && Physics.Raycast(transform.position, mesh.transform.forward.normalized, out hit, 100, LayerMask.GetMask("TileVolume"), QueryTriggerInteraction.Collide))
         {
-            if(interactionTile!=null) interactionTile.GetComponent<Outline>().enabled = false;
             interactionTile = hit.transform.parent.gameObject.GetComponent<Tile>();
-            interactionTile.GetComponent<Outline>().enabled = true;
         }
 
-        if (Input.GetButtonDown("Fire1") && !isMenuOpen && interactionTile != null)
+        if (Input.GetButtonDown("Fire1") && !isMenuOpen && interactionTile != null && timer <= 0)
         {
-            Debug.Log("CLICK");
+            timer = inputTimer;
             if(interactionTile.type_ == TileType.Buildable && interactionTile.attachedBuilding == null) {
                 showBuildMenu(true);
             }
             else if(interactionTile.type_ == TileType.Buildable){
                 showDemolishMenu(true);
             }
+
         }
 
         if (isMenuOpen)
@@ -107,17 +109,19 @@ public class CharacterMovement : MonoBehaviour
             {
                 SpawnBuilding(5);
             }
-            if (Input.GetButtonDown("Cancel"))
+            if (Input.GetButtonDown("Fire1") && timer < 0)
             {
                 showBuildMenu(false);
+                timer = inputTimer;
             }
         }
 
         if(isDemolishOpen)
         {
-            if (Input.GetButtonDown("Cancel"))
+            if (Input.GetButtonDown("Fire1") && timer < 0)
             {
                 showDemolishMenu(false);
+                timer = inputTimer;
             }
         }
 

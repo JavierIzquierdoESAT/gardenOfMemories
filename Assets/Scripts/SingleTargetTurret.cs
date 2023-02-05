@@ -63,11 +63,12 @@ public class SingleTargetTurret : Construction
   IEnumerator ShootTarget(){
     can_shoot_ = false;
     GameObject go = Instantiate(bullet_, position_of_gun_.position, Quaternion.identity);
-
-    go.GetComponent<Rigidbody>().AddForce(force_ * (target_.transform.position - position_of_gun_.position).normalized, ForceMode.Impulse);
+        
+        go.GetComponent<Rigidbody>().AddForce(force_ * (target_.transform.position - position_of_gun_.position).normalized, ForceMode.Impulse);
     go.GetComponent<Bullet>().target_ = target_;
+        go.GetComponent<Bullet>().hit((int)attackDamage_);
 
-    if(animator != null)
+        if (animator != null)
     {
         attacking = true;
         animator.SetBool("attacking", attacking);

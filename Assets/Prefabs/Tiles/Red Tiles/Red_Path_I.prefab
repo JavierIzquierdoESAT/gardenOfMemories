@@ -138,7 +138,6 @@ GameObject:
   m_Component:
   - component: {fileID: 281189540468695834}
   - component: {fileID: 5094450964547247958}
-  - component: {fileID: 3590302911600470543}
   - component: {fileID: 3698668883825674851}
   m_Layer: 12
   m_Name: Red_Path_I
@@ -182,24 +181,6 @@ MonoBehaviour:
   next_direction_: 2
   collider_: {fileID: 0}
   attachedBuilding: {fileID: 0}
---- !u!114 &3590302911600470543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2277590355117693324}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 0.9811321, g: 0.32766104, b: 0.32766104, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!65 &3698668883825674851
 BoxCollider:
   m_ObjectHideFlags: 0
