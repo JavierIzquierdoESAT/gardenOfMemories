@@ -115,7 +115,7 @@ public class CharacterMovement : MonoBehaviour
 
         if(isDemolishOpen)
         {
-            if (Input.GetButtonDown("Fire1") && timer < 0)
+            if (Input.GetButtonDown("Fire2") || (Input.GetButtonDown("Fire1") && timer < 0))
             {
                 showDemolishMenu(false);
                 timer = inputTimer;
