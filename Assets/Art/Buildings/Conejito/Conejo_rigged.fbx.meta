@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b30d99618399f404c90a66877d7654b9
+guid: c30c0e247b2d1634ab899351fb37f04c
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Carnivora_Rigeada_lambert2
-    second: {fileID: 2100000, guid: 3d8f8b763653bf544a9d5722d65f6223, type: 2}
+      name: lambert1
+    second: {fileID: 2100000, guid: 79f192ce69923554bade422a13c1db7f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -36,36 +36,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: idle
-      takeName: Take 001
-      internalID: 1827226128182048838
-      firstFrame: 1
-      lastFrame: 24
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []

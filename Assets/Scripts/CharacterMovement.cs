@@ -23,12 +23,12 @@ public class CharacterMovement : MonoBehaviour
 
     bool isMenuOpen;
     bool isDemolishOpen;
+
     // Start is called before the first frame update
     void Start()
     {
         showBuildMenu(false);
         showDemolishMenu(false);
-
         rb = GetComponent<Rigidbody>();
 
         foreach (Transform child in menu.transform)

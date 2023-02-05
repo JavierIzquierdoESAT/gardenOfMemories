@@ -14,6 +14,8 @@ public class SingleTargetTurret : Construction
   private bool can_shoot_ = true;
   [SerializeField]private List<Enemy> enemy_buffer_;
   private bool there_are_enemies_to_shoot = false;
+
+    public CustomCrapyAnimation anim;
   
 
   // Start is called before the first frame update
@@ -24,12 +26,13 @@ public class SingleTargetTurret : Construction
 
   // Update is called once per frame
   void Update()
-  {
+    { 
     LookForTargets();
     there_are_enemies_to_shoot = (enemy_buffer_.Count > 0);
     SetTarget();
 
     if(target_ != null){
+      transform.LookAt(target_.transform);
       if((target_.transform.position - position_of_gun_.position).magnitude > range_){
         UnlinkTarget();
       }
@@ -45,8 +48,11 @@ public class SingleTargetTurret : Construction
   IEnumerator ShootTarget(){
     can_shoot_ = false;
     GameObject go = Instantiate(bullet_, position_of_gun_.position, Quaternion.identity);
+
     go.GetComponent<Rigidbody>().AddForce(force_ * (target_.transform.position - position_of_gun_.position).normalized, ForceMode.Impulse);
     go.GetComponent<Bullet>().target_ = target_;
+    if(anim != null)
+        anim.attack();
     yield return new WaitForSeconds(attackSpeed_);
     can_shoot_ = true;
     
@@ -78,7 +84,8 @@ public class SingleTargetTurret : Construction
 
   public void UnlinkTarget(){
     target_ = null;
-    enemy_buffer_.RemoveAt(0);
+    if(enemy_buffer_.Count > 0)
+        enemy_buffer_.RemoveAt(0);
   }
 
   void GarbageCollector(){
