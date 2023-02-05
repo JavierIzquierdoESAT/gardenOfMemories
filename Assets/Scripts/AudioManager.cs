@@ -27,8 +27,8 @@ public class AudioManager : MonoBehaviour
     if(isWalking){
       PlayFootsteps(2);
     }else{
-      if(footSteps_intermediate_.isPlaying){
-        footSteps_intermediate_.Stop();
+      if(footSteps_solid_.isPlaying){
+        footSteps_solid_.Stop();
       }
     }
   }
