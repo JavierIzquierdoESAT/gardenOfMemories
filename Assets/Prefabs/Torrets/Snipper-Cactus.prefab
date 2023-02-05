@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 9140804354696837544}
   - component: {fileID: 5995057719157693439}
   m_Layer: 10
-  m_Name: Strelitzia
+  m_Name: Snipper-Cactus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,9 +79,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost_: {x: 0, y: 3, z: 5}
-  attackSpeed_: 0.5
-  attackDamage_: 2
-  range_: 3
+  attackSpeed_: 2.5
+  attackDamage_: 10
+  range_: 3.75
   bullet_: {fileID: 7173744077276944100, guid: 7a748117e59272845b3cc70bd7594023, type: 3}
   target_: {fileID: 0}
   position_of_gun_: {fileID: 2142413807158810419}

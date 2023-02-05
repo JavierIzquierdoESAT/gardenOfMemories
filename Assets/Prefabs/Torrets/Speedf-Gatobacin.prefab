@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 9140804354696837544}
   - component: {fileID: 5995057719157693439}
   m_Layer: 10
-  m_Name: Gatobacin
+  m_Name: Speedf-Gatobacin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af1e160b2b47b94cbf3980bb1574f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost_: {x: 5, y: 3, z: 0}
+  cost_: {x: 5, y: 0, z: 3}
   attackSpeed_: 0.3
   attackDamage_: 1
   range_: 1.5

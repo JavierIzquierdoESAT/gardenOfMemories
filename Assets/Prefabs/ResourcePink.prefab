@@ -92,8 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type_: 0
   hud_info_: {fileID: 0}
-  on_pick_resources_: 5
-  TimeAlive: 20
+  on_pick_resources_: 1
+  TimeAlive: 10
 --- !u!1 &3814053544424100796
 GameObject:
   m_ObjectHideFlags: 0
