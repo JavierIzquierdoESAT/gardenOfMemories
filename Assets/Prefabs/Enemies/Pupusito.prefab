@@ -121,6 +121,7 @@ MonoBehaviour:
   speed_: 7
   damagePoints_: 1
   health_: 25
+  audio_manager_: {fileID: 0}
   shooting_tower_: {fileID: 0}
   fix_position_: 1
 --- !u!54 &2100540966035883921

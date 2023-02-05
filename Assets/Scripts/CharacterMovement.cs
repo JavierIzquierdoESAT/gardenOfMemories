@@ -26,6 +26,7 @@ public class CharacterMovement : MonoBehaviour
 
     bool isMenuOpen;
     bool isDemolishOpen;
+    public AudioManager audio_manager_;
 
     const float inputTimer = 0.3f;
     float timer = 0;
@@ -56,9 +57,11 @@ public class CharacterMovement : MonoBehaviour
         
         if (movement.magnitude > 0)
         {
+            audio_manager_.isWalking = true;
             animator_.SetBool("IsMoving", true);
-            mesh.transform.rotation = Quaternion.Slerp(mesh.transform.rotation, Quaternion.LookRotation(movement.normalized), Time.deltaTime * rotationSpeed);
+            mesh.transform.rotation = Quaternion.LookRotation(movement.normalized);
         }else{
+            audio_manager_.isWalking = false;
             animator_.SetBool("IsMoving", false);
         }
         Vector3 tst = transform.position + mesh.transform.forward.normalized;
