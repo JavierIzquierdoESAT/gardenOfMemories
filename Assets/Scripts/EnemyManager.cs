@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyManager : MonoBehaviour
 {
   public List<Spawner> spawners_;
   public List<int> spawners_quantity_;
   public List<GameObject> enemy_prefabs_;
+
   public float time_between_waves_ = 1.0f;
   [SerializeField]private int spawn_index_ = 0;
   private bool level_finished_ = false;
@@ -33,6 +35,11 @@ public class EnemyManager : MonoBehaviour
         StartCoroutine(NextWave());
       }
     }
+
+    if(level_finished_ && Object.FindObjectOfType<Enemy>() == null)
+    {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
   }
 
   GameObject SpawnEnemy(Vector3 position){
@@ -60,7 +67,6 @@ public class EnemyManager : MonoBehaviour
       spawners_[spawn_index_].quantity_ = spawners_quantity_[spawn_index_];
       spawners_[spawn_index_].enemy_prefab_ = enemy_prefabs_[spawn_index_];
     }else{
-      Debug.Log("Level finished");
       level_finished_ = true;
     }
     transition_ = false;
