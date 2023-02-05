@@ -16,17 +16,32 @@ public class SingleTargetTurret : Construction
   private bool there_are_enemies_to_shoot = false;
 
     public CustomCrapyAnimation anim;
+    public Animator animator;
+    public float attackAnimTime;
+    private bool attacking;
+
+    private float timer = 0;
   
 
   // Start is called before the first frame update
   void Start()
   {
     enemy_buffer_ = new List<Enemy>();
+    if (animator!=null) animator.SetBool("growing", true);
+    attacking = false;
   }
 
   // Update is called once per frame
   void Update()
-    { 
+  { 
+    if(timer> 0)
+        timer -= Time.deltaTime;
+    if(timer<0 && attacking)
+    {
+        attacking = false;
+        if(animator!=null)animator.SetBool("attacking", attacking);
+    }
+
     LookForTargets();
     there_are_enemies_to_shoot = (enemy_buffer_.Count > 0);
     SetTarget();
@@ -51,6 +66,14 @@ public class SingleTargetTurret : Construction
 
     go.GetComponent<Rigidbody>().AddForce(force_ * (target_.transform.position - position_of_gun_.position).normalized, ForceMode.Impulse);
     go.GetComponent<Bullet>().target_ = target_;
+
+    if(animator != null)
+    {
+            Debug.Log("disparo");
+        attacking = true;
+        animator.SetBool("attacking", attacking);
+    }
+      
     if(anim != null)
         anim.attack();
     yield return new WaitForSeconds(attackSpeed_);
