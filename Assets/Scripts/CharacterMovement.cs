@@ -59,7 +59,7 @@ public class CharacterMovement : MonoBehaviour
         {
             audio_manager_.isWalking = true;
             animator_.SetBool("IsMoving", true);
-            mesh.transform.rotation = Quaternion.Slerp(mesh.transform.rotation, Quaternion.LookRotation(movement.normalized), Time.deltaTime * rotationSpeed);
+            mesh.transform.rotation = Quaternion.LookRotation(movement.normalized);
         }else{
             audio_manager_.isWalking = false;
             animator_.SetBool("IsMoving", false);
