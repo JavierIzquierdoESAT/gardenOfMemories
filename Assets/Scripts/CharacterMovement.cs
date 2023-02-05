@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour
 {
     public float maxSpeed;
     public float rotationSpeed;
+    public Animator animator_;
 
     public GameObject mesh;
 
@@ -49,7 +50,10 @@ public class CharacterMovement : MonoBehaviour
         
         if (movement.magnitude > 0)
         {
+            animator_.SetBool("IsMoving", true);
             mesh.transform.rotation = Quaternion.Slerp(mesh.transform.rotation, Quaternion.LookRotation(movement.normalized), Time.deltaTime * rotationSpeed);
+        }else{
+            animator_.SetBool("IsMoving", false);
         }
         Vector3 tst = transform.position + mesh.transform.forward.normalized;
         Debug.DrawRay(transform.position, mesh.transform.forward.normalized);

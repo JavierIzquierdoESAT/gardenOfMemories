@@ -3966,6 +3966,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 89100084}
     - target: {fileID: 8985043687064398631, guid: 6d4a24535d18f1044b8e01f5e94a301b, type: 3}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: 1130845992}
+    - target: {fileID: 8985043687064398631, guid: 6d4a24535d18f1044b8e01f5e94a301b, type: 3}
+      propertyPath: animator_
+      value: 
+      objectReference: {fileID: 1130845994}
+    - target: {fileID: 8985043687064398631, guid: 6d4a24535d18f1044b8e01f5e94a301b, type: 3}
       propertyPath: hud_info_
       value: 
       objectReference: {fileID: 146456117}
@@ -6331,6 +6339,16 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3509064582071395089, guid: 7cab4e3c704b7a84abf03d34ba4ac55f, type: 3}
   m_PrefabInstance: {fileID: 1129282724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1130845992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132148775577876, guid: 6d4a24535d18f1044b8e01f5e94a301b, type: 3}
+  m_PrefabInstance: {fileID: 659941760}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1130845994 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1130845994, guid: 6d4a24535d18f1044b8e01f5e94a301b, type: 3}
+  m_PrefabInstance: {fileID: 659941760}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1137179025 stripped
 MonoBehaviour:
