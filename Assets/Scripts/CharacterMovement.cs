@@ -22,7 +22,7 @@ public class CharacterMovement : MonoBehaviour
     private Tile interactionTile;
     public List<GameObject> buildings;
     public float max_velocity_ = 2.0f;
-    public float movement_force_ = 10.0f;
+    public float movement_force_ = 50.0f;
 
     bool isMenuOpen;
     bool isDemolishOpen;
