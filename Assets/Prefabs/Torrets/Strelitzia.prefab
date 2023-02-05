@@ -87,6 +87,9 @@ MonoBehaviour:
   position_of_gun_: {fileID: 2142413807158810419}
   force_: 15
   enemy_buffer_: []
+  anim: {fileID: 0}
+  animator: {fileID: 2582707021480903476}
+  attackAnimTime: 0.5
 --- !u!65 &5995057719157693439
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -113,15 +116,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c30c0e247b2d1634ab899351fb37f04c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c30c0e247b2d1634ab899351fb37f04c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c30c0e247b2d1634ab899351fb37f04c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c30c0e247b2d1634ab899351fb37f04c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -163,12 +166,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c30c0e247b2d1634ab899351fb37f04c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c30c0e247b2d1634ab899351fb37f04c, type: 3}
       propertyPath: m_Name
       value: Conejo_rigged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c30c0e247b2d1634ab899351fb37f04c, type: 3}
+--- !u!1 &1392087338274613218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c30c0e247b2d1634ab899351fb37f04c, type: 3}
+  m_PrefabInstance: {fileID: 2274557364061362867}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2582707021480903476
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392087338274613218}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c30c0e247b2d1634ab899351fb37f04c, type: 3}
+  m_Controller: {fileID: 9100000, guid: 3568017b5e79f0f498288a67e13891de, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!4 &1736806856893742424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c30c0e247b2d1634ab899351fb37f04c, type: 3}
