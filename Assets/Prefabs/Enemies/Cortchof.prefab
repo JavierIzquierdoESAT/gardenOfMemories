@@ -122,6 +122,7 @@ MonoBehaviour:
   damagePoints_: 5
   health_: 6
   shooting_tower_: {fileID: 0}
+  fix_position_: 1
 --- !u!54 &2100540966035883921
 Rigidbody:
   m_ObjectHideFlags: 0

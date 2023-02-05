@@ -10,11 +10,14 @@ public class Enemy : MonoBehaviour
   public int damagePoints_ = 2;
   public int health_ = 10;
   public SingleTargetTurret shooting_tower_ = null;
+  public bool fix_position_ = false;
   // Start is called before the first frame update
   void Start()
   {
     tr_ = GetComponent<Transform>();
-    health_ = 10;
+    if(fix_position_){
+      tr_.Translate(new Vector3(0.0f, -0.3f, 0.0f), Space.Self);
+    }
   }
 
   // Update is called once per frame

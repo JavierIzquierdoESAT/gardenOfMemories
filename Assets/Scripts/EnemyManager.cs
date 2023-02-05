@@ -8,10 +8,10 @@ public class EnemyManager : MonoBehaviour
   public List<int> spawners_quantity_;
   public List<GameObject> enemy_prefabs_;
   public float time_between_waves_ = 1.0f;
-  private int spawn_index_ = 0;
+  [SerializeField]private int spawn_index_ = 0;
   private bool level_finished_ = false;
   private bool transition_ = false;
-  private int max_waves_ = 0;
+  [SerializeField]private int max_waves_ = 0;
   public float initial_timer_ = 3.0f;
   private bool start_ = false;
   // Start is called before the first frame update
@@ -28,7 +28,7 @@ public class EnemyManager : MonoBehaviour
       spawners_[0].enabled_ = true;
       start_ = false;
     }
-    if(level_finished_ && !transition_ && start_){
+    if(!level_finished_ && !transition_ && !start_){
       if(spawners_[spawn_index_].quantity_ <= 0){
         StartCoroutine(NextWave());
       }
@@ -41,22 +41,24 @@ public class EnemyManager : MonoBehaviour
   }
 
   void InitSpawners(){
-    for(int i = 0; i < spawners_.Count; i++){
-      spawners_[i].quantity_ = spawners_quantity_[i];
-      spawners_[i].enemy_prefab_ = enemy_prefabs_[i];
-    }
+
+    spawners_[0].quantity_ = spawners_quantity_[0];
+    spawners_[0].enemy_prefab_ = enemy_prefabs_[0];
+    
     max_waves_ = spawners_.Count;
   }
 
   IEnumerator NextWave(){
     transition_ = true;
     if(spawners_[spawn_index_] != null){
-      spawners_[spawn_index_].enabled_ = false;
+      //spawners_[spawn_index_].enabled_ = false;
     }
     yield return new WaitForSeconds(time_between_waves_);
     spawn_index_++;
     if(spawn_index_ < max_waves_){
       spawners_[spawn_index_].enabled_ = true;
+      spawners_[spawn_index_].quantity_ = spawners_quantity_[spawn_index_];
+      spawners_[spawn_index_].enemy_prefab_ = enemy_prefabs_[spawn_index_];
     }else{
       Debug.Log("Level finished");
       level_finished_ = true;
@@ -71,5 +73,9 @@ public class EnemyManager : MonoBehaviour
   IEnumerator InitialTimer(){
     yield return new WaitForSeconds(initial_timer_);
     start_ = true;
+  }
+
+  public void CountEnemy(){
+
   }
 }

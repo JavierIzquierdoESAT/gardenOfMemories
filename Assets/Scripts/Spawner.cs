@@ -8,7 +8,7 @@ public enum Direction{
   Left,
   Right,
   Backwards
-}
+};
 public class Spawner : MonoBehaviour
 {
   bool can_spawn_ = true;
@@ -18,8 +18,10 @@ public class Spawner : MonoBehaviour
   public int quantity_;
   public float frequency_in_seconds_;
   public bool enabled_ = false;
+  private EnemyManager manager_;
   void Start()
   {
+    manager_ = GameObject.FindAnyObjectByType<EnemyManager>();
     tr_ = GetComponent<Transform>();
     switch(direction_relative_to_z_axis_){
       case Direction.Forward:{
@@ -54,6 +56,7 @@ public class Spawner : MonoBehaviour
     if(enemy_prefab_ != null){
       
       Instantiate(enemy_prefab_, new Vector3(tr_.position.x, 0.35f, tr_.position.z), tr_.rotation);
+      manager_.CountEnemy();
     }
     yield return new WaitForSeconds(time);
     can_spawn_ = true;
