@@ -28,7 +28,7 @@ public class EnemyManager : MonoBehaviour
       spawners_[0].enabled_ = true;
       start_ = false;
     }
-    if(!level_finished_ && !transition_ && start_){
+    if(level_finished_ && !transition_ && start_){
       if(spawners_[spawn_index_].quantity_ <= 0){
         StartCoroutine(NextWave());
       }

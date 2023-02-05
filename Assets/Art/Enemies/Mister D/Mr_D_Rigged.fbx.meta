@@ -1,0 +1,182 @@
+fileFormatVersion: 2
+guid: f74ed7d5d80effd4bb48d2bde004aef4
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 6a516d6bc82fa204fb84e38ae1c8ec7d, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftUpperArm' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Mr_D_Rigged(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mister_D_low:Mesh
+      parentName: Mr_D_Rigged(Clone)
+      position: {x: -0, y: 0.015818903, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint39
+      parentName: Mr_D_Rigged(Clone)
+      position: {x: -0.00003812259, y: 0.010282569, z: 0.000502298}
+      rotation: {x: 0.29951265, y: 0.9540923, z: 7.676116e-17, w: -4.0081447e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint40
+      parentName: joint39
+      position: {x: -0.0052496186, y: -1.9428903e-18, z: -6.428929e-19}
+      rotation: {x: 0, y: 0, z: 0.3761375, w: 0.92656386}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint41
+      parentName: joint40
+      position: {x: -0.0033358508, y: -6.9388935e-19, z: -2.9292844e-19}
+      rotation: {x: 1.9279483e-34, y: -3.9863584e-17, z: 0.04574194, w: 0.99895334}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint42
+      parentName: joint41
+      position: {x: -0.0031852312, y: -3.8857806e-18, z: -2.5368363e-19}
+      rotation: {x: 0.67100537, y: 0.7414526, z: 8.6488106e-17, w: -4.313648e-18}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint43
+      parentName: joint39
+      position: {x: 0.0018201332, y: -0.0049239886, z: 2.2290201e-19}
+      rotation: {x: -0.5453516, y: 0.83820736, z: -5.13254e-17, w: 3.339316e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint44
+      parentName: joint43
+      position: {x: 0.0033358487, y: 0.0000000044338444, z: 1.6552687e-19}
+      rotation: {x: 0.0000000074427824, y: 3.4080402e-10, z: 0.04574194, w: 0.99895334}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint45
+      parentName: joint44
+      position: {x: 0.0031852275, y: 0.0000000019900743, z: 1.5433418e-19}
+      rotation: {x: 0.67100537, y: 0.7414526, z: 8.6488106e-17, w: -4.313648e-18}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint46
+      parentName: joint39
+      position: {x: 0.0030735384, y: 0.0045418697, z: 0.005776427}
+      rotation: {x: 0.081586495, y: 0.042601027, z: 0.88267004, w: -0.46089306}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint47
+      parentName: joint46
+      position: {x: -0.006521048, y: -5.514691e-19, z: 0.0052113417}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint48
+      parentName: joint47
+      position: {x: -0.0063991593, y: -8.87415e-18, z: 0.0026998515}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint49
+      parentName: joint48
+      position: {x: -0.0049974388, y: -2.503323e-18, z: -0.00006278725}
+      rotation: {x: -0.000000011175871, y: 0.061919793, z: -0.000000026077032, w: 0.9980812}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint50
+      parentName: joint49
+      position: {x: -0.0059725484, y: 5.551805e-19, z: -0.002762639}
+      rotation: {x: 0, y: 0, z: 0.8864326, w: 0.46285772}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
