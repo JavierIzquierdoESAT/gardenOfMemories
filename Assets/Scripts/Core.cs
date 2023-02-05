@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Core : MonoBehaviour
 {
@@ -19,12 +20,12 @@ public class Core : MonoBehaviour
   }
 
   public void damageCore(int dmg){
-    if(health_ > 0 && !core_died_){
+    if(health_ >= 0 && !core_died_){
       health_ -= dmg;
     }else{
       health_ = 0;
       core_died_ = true;
-      Debug.Log("You lost");
+            SceneManager.LoadScene("Lose", LoadSceneMode.Single);
     }
   }
 }

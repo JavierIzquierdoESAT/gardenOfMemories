@@ -16,16 +16,20 @@ public class MainMenu : MonoBehaviour
   public GameObject button_quit_;
   public GameObject button_credits_;
   public GameObject volume_slider_;
+
+  public bool continueOnEnter;
   // Start is called before the first frame update
   void Start()
   {
-      
+   
   }
 
   // Update is called once per frame
   void Update()
   {
-    
+    if (continueOnEnter && Input.GetButtonDown("Submit")) {
+            NextScene();
+    }
   }
 
   public void OpenCredits(){
@@ -44,11 +48,15 @@ public class MainMenu : MonoBehaviour
     volume_slider_.SetActive(false);
   }
 
-  public void EnterPlay(){
-    SceneManager.LoadScene("level_01", LoadSceneMode.Single);
-  }
-
-  public void QuitGame(){
+    public void NextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void goToScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+    }
+    public void QuitGame(){
     Application.Quit();
   }
 }
