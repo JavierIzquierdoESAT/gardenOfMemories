@@ -10,11 +10,14 @@ public class Enemy : MonoBehaviour
   public int damagePoints_ = 2;
   public int health_ = 10;
   public SingleTargetTurret shooting_tower_ = null;
+  public bool fix_position_ = false;
   // Start is called before the first frame update
   void Start()
   {
     tr_ = GetComponent<Transform>();
-    health_ = 10;
+    if(fix_position_){
+      tr_.Translate(new Vector3(0.0f, -0.3f, 0.0f), Space.Self);
+    }
   }
 
   // Update is called once per frame
@@ -29,13 +32,11 @@ public class Enemy : MonoBehaviour
   public void RotateLeft(){
     tr_.Rotate(new Vector3(0.0f, -45.0f, 0.0f), Space.Self);
     tr_.GetChild(0).Rotate(new Vector3(0.0f, -45.0f, 0.0f), Space.Self);
-    tr_.Translate(tr_.right * 0.2f);
   }
 
   public void RotateRight(){
     tr_.Rotate(new Vector3(0.0f, 45.0f, 0.0f), Space.Self);
     tr_.GetChild(0).Rotate(new Vector3(0.0f, 45.0f, 0.0f), Space.Self);
-    tr_.Translate(-tr_.right * 0.2f);
   }
 
   public void MoveForward(){
@@ -56,7 +57,7 @@ public class Enemy : MonoBehaviour
   void OnTriggerEnter(Collider other){
     if(!other.CompareTag("IgnoreEnemy")){
 
-      Tile tile_collider = other.GetComponentInParent<Tile>();
+      Tile tile_collider = other.GetComponent<Tile>();
       Core core_collider = other.GetComponentInParent<Core>();
       Bullet bullet_collider = other.GetComponentInParent<Bullet>();
       if(tile_collider != null){
