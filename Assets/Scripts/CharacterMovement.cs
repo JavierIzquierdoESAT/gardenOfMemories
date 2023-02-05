@@ -21,6 +21,8 @@ public class CharacterMovement : MonoBehaviour
 
     private Tile interactionTile;
     public List<GameObject> buildings;
+    public float max_velocity_ = 2.0f;
+    public float movement_force_ = 10.0f;
 
     bool isMenuOpen;
     bool isDemolishOpen;
@@ -46,7 +48,8 @@ public class CharacterMovement : MonoBehaviour
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         Vector3 movement = new Vector3(maxSpeed * input.x, 0, maxSpeed * input.y);
         movement = Vector3.ClampMagnitude(movement, maxSpeed) * Time.deltaTime;
-        transform.Translate(movement, Space.Self);
+        if(rb.velocity.magnitude < max_velocity_)
+        rb.AddForce(movement * movement_force_, ForceMode.VelocityChange);
         
         if (movement.magnitude > 0)
         {

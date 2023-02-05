@@ -19,8 +19,8 @@ TagManager:
   - Turret
   - Terrain
   - TurnCollider
-  - 
-  - 
+  - EnemyPath
+  - Bridge
   - 
   - 
   - 
