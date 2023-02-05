@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 2038700906320752957}
   - component: {fileID: 2219699662162792785}
   m_Layer: 12
-  m_Name: Green_Floor_variant
+  m_Name: Green_Floor_varia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42ebb1817b8e954dafc5d7dc1feeebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type_: 1
+  type_: 0
   next_direction_: 2
   collider_: {fileID: 0}
   attachedBuilding: {fileID: 0}
