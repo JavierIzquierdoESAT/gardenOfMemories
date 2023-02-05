@@ -26,6 +26,7 @@ public class CharacterMovement : MonoBehaviour
 
     bool isMenuOpen;
     bool isDemolishOpen;
+    public AudioManager audio_manager_;
 
     // Start is called before the first frame update
     void Start()
@@ -53,9 +54,11 @@ public class CharacterMovement : MonoBehaviour
         
         if (movement.magnitude > 0)
         {
+            audio_manager_.isWalking = true;
             animator_.SetBool("IsMoving", true);
             mesh.transform.rotation = Quaternion.Slerp(mesh.transform.rotation, Quaternion.LookRotation(movement.normalized), Time.deltaTime * rotationSpeed);
         }else{
+            audio_manager_.isWalking = false;
             animator_.SetBool("IsMoving", false);
         }
         Vector3 tst = transform.position + mesh.transform.forward.normalized;

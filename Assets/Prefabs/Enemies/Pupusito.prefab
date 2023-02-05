@@ -118,9 +118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b555ec939b54e4b9e3d216fd44591b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound_index: 0
   speed_: 3
   damagePoints_: 10
   health_: 25
+  audio_manager_: {fileID: 0}
   shooting_tower_: {fileID: 0}
   fix_position_: 1
 --- !u!54 &2100540966035883921

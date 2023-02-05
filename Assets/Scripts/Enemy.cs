@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+  public int sound_index = 0;
   public float speed_ = 1.0f;
   private Transform tr_;
   public int damagePoints_ = 2;
   public int health_ = 10;
+  public AudioManager audio_manager_;
   public SingleTargetTurret shooting_tower_ = null;
   public bool fix_position_ = false;
   // Start is called before the first frame update
   void Start()
   {
     tr_ = GetComponent<Transform>();
+    audio_manager_ = GameObject.FindObjectOfType<AudioManager>();
     if(fix_position_){
       tr_.Translate(new Vector3(0.0f, -0.3f, 0.0f), Space.Self);
     }
@@ -30,13 +33,19 @@ public class Enemy : MonoBehaviour
   }
 
   public void RotateLeft(){
+   
     tr_.Rotate(new Vector3(0.0f, -45.0f, 0.0f), Space.Self);
-    tr_.GetChild(0).Rotate(new Vector3(0.0f, -45.0f, 0.0f), Space.Self);
+    if(!fix_position_){
+      //tr_.GetChild(0).Rotate(new Vector3(0.0f, -60.0f, 0.0f), Space.Self);
+    }
   }
 
   public void RotateRight(){
+ 
     tr_.Rotate(new Vector3(0.0f, 45.0f, 0.0f), Space.Self);
-    tr_.GetChild(0).Rotate(new Vector3(0.0f, 45.0f, 0.0f), Space.Self);
+    if(!fix_position_){
+      //tr_.GetChild(0).Rotate(new Vector3(0.0f, 20.0f, 0.0f), Space.Self);
+    }
   }
 
   public void MoveForward(){
@@ -52,6 +61,20 @@ public class Enemy : MonoBehaviour
       shooting_tower_.UnlinkTarget();
     }
     Destroy(gameObject);
+    switch(sound_index){
+      case 0:{
+        audio_manager_.PupusitoDeathSound();
+        break;
+      }
+      case 1:{
+        audio_manager_.MisterDDeathSound();
+        break;
+      }
+      default:{
+        audio_manager_.RanaDeathSound();
+        break;
+      }
+    }
   }
 
   void OnTriggerEnter(Collider other){
