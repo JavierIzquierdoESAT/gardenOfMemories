@@ -900,23 +900,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3350474371114072104, guid: 49466674f0ed74a44851cb26b12f8a3a, type: 3}
   m_PrefabInstance: {fileID: 137558945}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &233440603 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 713928429108470321, guid: 4d527c6a1ecbfdd4bb8dcbc81b8106a7, type: 3}
-  m_PrefabInstance: {fileID: 504092664}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &233440609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233440603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &236051881 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8868814301131203650, guid: bada100a08c1ae44b8250c7540d35b2d, type: 3}
@@ -2037,10 +2020,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 89100084}
     - target: {fileID: 8985043687064398631, guid: 6d4a24535d18f1044b8e01f5e94a301b, type: 3}
-      propertyPath: maxSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8985043687064398631, guid: 6d4a24535d18f1044b8e01f5e94a301b, type: 3}
       propertyPath: hud_info_
       value: 
       objectReference: {fileID: 146456117}
@@ -2048,10 +2027,6 @@ PrefabInstance:
       propertyPath: demolishMenu
       value: 
       objectReference: {fileID: 2093492788}
-    - target: {fileID: 8985043687064398631, guid: 6d4a24535d18f1044b8e01f5e94a301b, type: 3}
-      propertyPath: rotationSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 9136253594923366699, guid: 6d4a24535d18f1044b8e01f5e94a301b, type: 3}
       propertyPath: m_Name
       value: Character
