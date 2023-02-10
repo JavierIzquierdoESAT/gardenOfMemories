@@ -6431,6 +6431,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red_Build (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 7722154921658729572, guid: 4d527c6a1ecbfdd4bb8dcbc81b8106a7, type: 3}
+      propertyPath: attachedBuilding
+      value: 
+      objectReference: {fileID: 9140804354696837544, guid: 4a91544c5da917f49a4b96125f25c708, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d527c6a1ecbfdd4bb8dcbc81b8106a7, type: 3}
 --- !u!114 &158570606466352795
@@ -6512,6 +6516,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 201454649, guid: 52a198af55f99f7479ef3890f6f729bc, type: 3}
+      propertyPath: m_Size.z
+      value: 0.80965257
+      objectReference: {fileID: 0}
+    - target: {fileID: 201454649, guid: 52a198af55f99f7479ef3890f6f729bc, type: 3}
+      propertyPath: m_Center.z
+      value: 0.0044424534
+      objectReference: {fileID: 0}
+    - target: {fileID: 1172740826, guid: 52a198af55f99f7479ef3890f6f729bc, type: 3}
+      propertyPath: m_Size.z
+      value: 0.8121661
+      objectReference: {fileID: 0}
+    - target: {fileID: 1172740826, guid: 52a198af55f99f7479ef3890f6f729bc, type: 3}
+      propertyPath: m_Center.z
+      value: 0.0018774867
+      objectReference: {fileID: 0}
+    - target: {fileID: 1461428891, guid: 52a198af55f99f7479ef3890f6f729bc, type: 3}
+      propertyPath: m_Size.z
+      value: 0.8032698
+      objectReference: {fileID: 0}
+    - target: {fileID: 1461428891, guid: 52a198af55f99f7479ef3890f6f729bc, type: 3}
+      propertyPath: m_Center.z
+      value: -0.0029139386
+      objectReference: {fileID: 0}
     - target: {fileID: 356622981799568984, guid: 52a198af55f99f7479ef3890f6f729bc, type: 3}
       propertyPath: m_Name
       value: Puente

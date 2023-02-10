@@ -24,9 +24,18 @@ public class Tile : MonoBehaviour
   private Transform tr_;
 
   public Construction attachedBuilding;
+
+    [HideInInspector]
+  public Outline outline;
   // Start is called before the first frame update
   void Start()
   {
+        outline = GetComponent<Outline>();
+        if(outline != null )
+        {
+            outline.enabled = false;
+        }
+
         if(attachedBuilding != null)
         {
             attachedBuilding = Instantiate(attachedBuilding, gameObject.transform);

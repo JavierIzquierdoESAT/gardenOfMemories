@@ -77,10 +77,25 @@ public class CharacterMovement : MonoBehaviour
         //TILE DETECTION
         RaycastHit hit;
         RayDir = move.magnitude > 0 ? move : RayDir; 
-        Debug.DrawRay(transform.position, RayDir);
-        if (isMenuOpen == false && Physics.Raycast(transform.position, mesh.transform.forward.normalized, out hit, 100, LayerMask.GetMask("TileVolume"), QueryTriggerInteraction.Collide))
+        Debug.DrawRay(transform.position, transform.position + mesh.transform.forward.normalized);
+        if (Physics.Raycast(transform.position, mesh.transform.forward.normalized, out hit, 2, LayerMask.GetMask("TileVolume"), QueryTriggerInteraction.Collide))
         {
-            interactionTile = hit.transform.parent.gameObject.GetComponent<Tile>();
+            Tile newTile = hit.transform.parent.gameObject.GetComponent<Tile>();
+            if(newTile != null)
+            {
+                if (interactionTile != null && newTile != interactionTile)
+                {
+                    if (interactionTile.outline != null)
+                    {
+                        interactionTile.outline.enabled = false;
+                    }
+                    if (newTile.outline != null)
+                    {
+                        newTile.outline.enabled = true;
+                    }
+                }
+                interactionTile = newTile;
+            }
         }
 
 
