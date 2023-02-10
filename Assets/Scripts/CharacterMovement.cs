@@ -12,10 +12,10 @@ public class CharacterMovement : MonoBehaviour
 
     public GameObject mesh;
 
+    
     public CanvasRenderer menu;
     public CanvasRenderer demolishMenu;
 
-    //private Tile interactionTile;
     public Rigidbody rb;
     public Hud hud_info_;
 
@@ -28,15 +28,21 @@ public class CharacterMovement : MonoBehaviour
     bool isDemolishOpen;
     public AudioManager audio_manager_;
 
+
+    private CharacterController cc;
+    private Vector3 RayDir;
+
     const float inputTimer = 0.3f;
     float timer = 0;
     // Start is called before the first frame update
     void Start()
     {
+        RayDir = Vector3.zero;
         audio_manager_ = GameObject.FindObjectOfType<AudioManager>();
         showBuildMenu(false);
         showDemolishMenu(false);
         rb = GetComponent<Rigidbody>();
+        cc = GetComponent<CharacterController>();
 
         foreach (Transform child in menu.transform)
         {
@@ -47,31 +53,38 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //MOVEMENT
         timer -= Time.deltaTime;
-        RaycastHit hit;
 
-        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Vector3 movement = new Vector3(maxSpeed * input.x, 0, maxSpeed * input.y);
-        movement = Vector3.ClampMagnitude(movement, maxSpeed) * Time.deltaTime;
-        if(rb.velocity.magnitude < max_velocity_)
-        rb.AddForce(movement * movement_force_, ForceMode.VelocityChange);
-        
-        if (movement.magnitude > 0)
+        Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f , Input.GetAxisRaw("Vertical")).normalized;
+        cc.Move(move * Time.deltaTime * maxSpeed);
+
+        Vector3 gravity = new Vector3(0.0f, -9.8f, 0.0f);
+        cc.Move(gravity * Time.deltaTime);
+
+        //ROTATION
+        if (move.magnitude > 0)
         {
             audio_manager_.isWalking = true;
             animator_.SetBool("IsMoving", true);
-            mesh.transform.rotation = Quaternion.LookRotation(movement.normalized);
-        }else{
+            mesh.transform.rotation = Quaternion.Lerp(mesh.transform.rotation, Quaternion.LookRotation(move), Time.deltaTime * rotationSpeed);
+        }
+        else{
             audio_manager_.isWalking = false;
             animator_.SetBool("IsMoving", false);
         }
-        Vector3 tst = transform.position + mesh.transform.forward.normalized;
-        Debug.DrawRay(transform.position, mesh.transform.forward.normalized);
+
+        //TILE DETECTION
+        RaycastHit hit;
+        RayDir = move.magnitude > 0 ? move : RayDir; 
+        Debug.DrawRay(transform.position, RayDir);
         if (isMenuOpen == false && Physics.Raycast(transform.position, mesh.transform.forward.normalized, out hit, 100, LayerMask.GetMask("TileVolume"), QueryTriggerInteraction.Collide))
         {
             interactionTile = hit.transform.parent.gameObject.GetComponent<Tile>();
         }
 
+
+        //OPEN MENU
         if (Input.GetButtonDown("Fire1") && !isMenuOpen && !isDemolishOpen && interactionTile != null && timer <= 0)
         {
             timer = inputTimer;
@@ -84,6 +97,7 @@ public class CharacterMovement : MonoBehaviour
 
         }
 
+        //MENU ACTIONS
         if (isMenuOpen)
         {
             if (Input.GetButtonDown("Build1"))

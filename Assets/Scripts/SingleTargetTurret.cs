@@ -32,10 +32,11 @@ public class SingleTargetTurret : Construction
   { 
     LookForTargets();
     there_are_enemies_to_shoot = (enemy_buffer_.Count > 0);
+    if (animator != null)
+    {
         if (there_are_enemies_to_shoot) animator.SetBool("attacking", true);
-        else {
-            animator.SetBool("attacking", false); 
-        }
+        else animator.SetBool("attacking", false);
+    }
     SetTarget();
 
     if(target_ != null){
