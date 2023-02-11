@@ -6,48 +6,51 @@ using UnityEngine.XR;
 
 public class CharacterMovement : MonoBehaviour
 {
+    [Header("Gameplay Variables")]
     public float maxSpeed;
     public float rotationSpeed;
-    public Animator animator_;
 
+    [Header("Dependencies")]
+    public Animator animator_;
     public GameObject mesh;
 
-    
-    public CanvasRenderer menu;
-    public CanvasRenderer demolishMenu;
 
-    public Rigidbody rb;
-    public Hud hud_info_;
+    private Hud hud_info_;
+    private AudioManager audio_manager_;
+    private CharacterController cc;
+    private Rigidbody rb;
 
     private Tile interactionTile;
     public List<GameObject> buildings;
-    public float max_velocity_ = 2.0f;
-    public float movement_force_ = 50.0f;
+    private bool isMenuOpen;
+    private bool isDemolishOpen;
 
-    bool isMenuOpen;
-    bool isDemolishOpen;
-    public AudioManager audio_manager_;
+    private const float inputTimer = 0.3f;
+    private float timer = 0;
 
-
-    private CharacterController cc;
-    private Vector3 RayDir;
-
-    const float inputTimer = 0.3f;
-    float timer = 0;
     // Start is called before the first frame update
     void Start()
     {
-        RayDir = Vector3.zero;
-        audio_manager_ = GameObject.FindObjectOfType<AudioManager>();
+
+        audio_manager_ = FindObjectOfType<AudioManager>();
+        hud_info_ = FindObjectOfType<Hud>();
+        foreach (Transform child in hud_info_.buildMenu.transform)
+        {
+            if (child.gameObject.activeSelf)
+            {
+                buildings.Add(child.gameObject.GetComponent<buttonDataRef>().building.gameObject);
+            }
+            else
+            {
+                buildings.Add(null);
+            }
+        }
         showBuildMenu(false);
         showDemolishMenu(false);
         rb = GetComponent<Rigidbody>();
         cc = GetComponent<CharacterController>();
 
-        foreach (Transform child in menu.transform)
-        {
-            buildings.Add(child.gameObject.GetComponent<buttonDataRef>().building.gameObject);
-        }
+
     }
 
     // Update is called once per frame
@@ -76,7 +79,6 @@ public class CharacterMovement : MonoBehaviour
 
         //TILE DETECTION
         RaycastHit hit;
-        RayDir = move.magnitude > 0 ? move : RayDir; 
         Debug.DrawRay(transform.position, transform.position + mesh.transform.forward.normalized);
         if (Physics.Raycast(transform.position, mesh.transform.forward.normalized, out hit, 2, LayerMask.GetMask("TileVolume"), QueryTriggerInteraction.Collide))
         {
@@ -159,12 +161,16 @@ public class CharacterMovement : MonoBehaviour
 
     public void SpawnBuilding(int type)
     {
-        if(AvailableBuilding(hud_info_.resources_inv_, buildings[type].GetComponent<Construction>().cost_))
+        if (buildings[type] != null)
         {
-            interactionTile.attachedBuilding = Instantiate(buildings[type], interactionTile.gameObject.transform).GetComponent<Construction>();
-            hud_info_.resources_inv_ -= interactionTile.attachedBuilding.cost_;
-            showBuildMenu(false);
+            if (AvailableBuilding(hud_info_.resources_inv_, buildings[type].GetComponent<Construction>().cost_))
+            {
+                interactionTile.attachedBuilding = Instantiate(buildings[type], interactionTile.gameObject.transform).GetComponent<Construction>();
+                hud_info_.resources_inv_ -= interactionTile.attachedBuilding.cost_;
+                showBuildMenu(false);
+            }
         }
+
     }
 
     public bool AvailableBuilding(Vector3 rs1, Vector3 rs2){
@@ -188,12 +194,12 @@ public class CharacterMovement : MonoBehaviour
         if(Activate)
         {
             isMenuOpen = true;
-            menu.gameObject.SetActive(true);
+            hud_info_.buildMenu.gameObject.SetActive(true);
         }
         else
         {
             isMenuOpen = false;
-            menu.gameObject.SetActive(false);
+            hud_info_.buildMenu.gameObject.SetActive(false);
         }
 
     }
@@ -203,12 +209,12 @@ public class CharacterMovement : MonoBehaviour
         if (Activate)
         {
             isDemolishOpen = true;
-            demolishMenu.gameObject.SetActive(true);
+            hud_info_.demolishMenu.gameObject.SetActive(true);
         }
         else
         {
             isDemolishOpen = false;
-            demolishMenu.gameObject.SetActive(false);
+            hud_info_.demolishMenu.gameObject.SetActive(false);
         }
     }
 

@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 5995057719157693439}
   - component: {fileID: 3842828698790060292}
   m_Layer: 10
-  m_Name: ResourceTowerYellow
+  m_Name: YellowBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

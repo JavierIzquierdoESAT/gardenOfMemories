@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5468442ce0265e94bb605c5c329acd9a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59115902a01af3f499887ee9294d1170, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 5995057719157693439}
   - component: {fileID: 3842828698790060292}
   m_Layer: 10
-  m_Name: ResourceTowerGreen
+  m_Name: PinkBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,9 +209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed84909dad6ac294794a424c06ec0df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost_: {x: 0, y: 0, z: 15}
-  type_: 1
-  resource_prefab_: {fileID: 1414800479229659838, guid: 424dac248cee7724cb9dafe5d87620fd, type: 3}
+  cost_: {x: 0, y: 15, z: 0}
+  type_: 0
+  resource_prefab_: {fileID: 1414800479229659838, guid: de2198769b4bc51459652780f1bd2b19, type: 3}
   cooldown_: 3
   drop_radius_: 0.8
   inner_radius_: 0.2
