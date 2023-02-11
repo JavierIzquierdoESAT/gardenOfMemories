@@ -57,7 +57,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2857470174708406543}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -66,7 +66,7 @@ Transform:
   - {fileID: 5530773733537713942}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!23 &5099937278315305220
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -125,7 +125,8 @@ MonoBehaviour:
   attackSpeed_: 0.3
   attackDamage_: 1
   range_: 1.5
-  bulletSpeed: 15
+  rotationSpeed_: 10
+  bulletSpeed: 5
   bullet_: {fileID: 7173744077276944100, guid: 7a748117e59272845b3cc70bd7594023, type: 3}
   anim: {fileID: 0}
   animator: {fileID: 1882906776893805932}

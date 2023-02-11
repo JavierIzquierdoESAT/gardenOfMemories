@@ -9,6 +9,7 @@ public class SingleTargetTurret : Construction
     public float attackSpeed_;
     public float attackDamage_;
     public float range_;
+    public float rotationSpeed_;
     public float bulletSpeed;
 
     [Header("Dependencies")]
@@ -52,6 +53,7 @@ public class SingleTargetTurret : Construction
     void Update()
     {
         Debug.DrawLine(transform.position, transform.position + transform.forward * range_);
+
         LookForTargets();
         there_are_enemies_to_shoot = (enemy_buffer_.Count > 0);
         if (animator != null)
@@ -63,7 +65,11 @@ public class SingleTargetTurret : Construction
 
         if (target_ != null)
         {
-            transform.LookAt(target_.transform);
+            //rotate
+            Quaternion lookTarget = Quaternion.LookRotation((target_.transform.position - transform.position).normalized);
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookTarget, Time.deltaTime * rotationSpeed_);
+
+            //transform.LookAt(target_.transform);
             if ((target_.transform.position - position_of_gun_.position).magnitude > range_)
             {
                 UnlinkTarget();

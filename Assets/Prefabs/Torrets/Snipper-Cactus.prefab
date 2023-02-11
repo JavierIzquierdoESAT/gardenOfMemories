@@ -82,7 +82,8 @@ MonoBehaviour:
   attackSpeed_: 2.5
   attackDamage_: 10
   range_: 3.75
-  bulletSpeed: 15
+  rotationSpeed_: 10
+  bulletSpeed: 10
   bullet_: {fileID: 7173744077276944100, guid: 7a748117e59272845b3cc70bd7594023, type: 3}
   anim: {fileID: 0}
   animator: {fileID: 2582707021480903476}
