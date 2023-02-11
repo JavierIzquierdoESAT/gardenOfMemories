@@ -125,14 +125,13 @@ MonoBehaviour:
   attackSpeed_: 0.3
   attackDamage_: 1
   range_: 1.5
+  bulletSpeed: 15
   bullet_: {fileID: 7173744077276944100, guid: 7a748117e59272845b3cc70bd7594023, type: 3}
-  target_: {fileID: 0}
-  position_of_gun_: {fileID: 2142413807158810419}
-  force_: 15
-  enemy_buffer_: []
   anim: {fileID: 0}
   animator: {fileID: 1882906776893805932}
-  attackAnimTime: 2
+  position_of_gun_: {fileID: 2142413807158810419}
+  enemy_buffer_: []
+  target_: {fileID: 0}
 --- !u!65 &5995057719157693439
 BoxCollider:
   m_ObjectHideFlags: 0

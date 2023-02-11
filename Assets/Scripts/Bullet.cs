@@ -26,7 +26,6 @@ public class Bullet : MonoBehaviour
   }
     public void hit(int am)
     {
-        Debug.Log(am);
         target_.receiveDamage(am);
     }
 
