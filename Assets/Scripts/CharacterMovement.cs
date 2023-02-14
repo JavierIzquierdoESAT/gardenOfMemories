@@ -25,6 +25,8 @@ public class CharacterMovement : MonoBehaviour
     private bool isMenuOpen;
     private bool isDemolishOpen;
 
+    private bool walking_ = false;
+
     private const float inputTimer = 0.3f;
     private float timer = 0;
 
@@ -68,14 +70,15 @@ public class CharacterMovement : MonoBehaviour
         //ROTATION
         if (move.magnitude > 0)
         {
-            audio_manager_.isWalking = true;
-            animator_.SetBool("IsMoving", true);
+            walking_ = true;
             mesh.transform.rotation = Quaternion.Lerp(mesh.transform.rotation, Quaternion.LookRotation(move), Time.deltaTime * rotationSpeed);
+        }else{
+          walking_ = false;
         }
-        else{
-            audio_manager_.isWalking = false;
-            animator_.SetBool("IsMoving", false);
-        }
+
+
+        audio_manager_.isWalking = walking_;
+        animator_.SetBool("IsMoving", walking_);
 
         //TILE DETECTION
         RaycastHit hit;

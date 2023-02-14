@@ -33,23 +33,15 @@ public class Enemy : MonoBehaviour
   }
 
   public void RotateLeft(){
-   
-    tr_.Rotate(new Vector3(0.0f, -45.0f, 0.0f), Space.Self);
-    if(!fix_position_){
-      //tr_.GetChild(0).Rotate(new Vector3(0.0f, -60.0f, 0.0f), Space.Self);
-    }
+    tr_.Rotate(new Vector3(0.0f, -90.0f, 0.0f), Space.Self);
   }
 
   public void RotateRight(){
- 
-    tr_.Rotate(new Vector3(0.0f, 45.0f, 0.0f), Space.Self);
-    if(!fix_position_){
-      //tr_.GetChild(0).Rotate(new Vector3(0.0f, 20.0f, 0.0f), Space.Self);
-    }
+    tr_.Rotate(new Vector3(0.0f, 90.0f, 0.0f), Space.Self);
   }
 
   public void MoveForward(){
-    tr_.Translate(Time.deltaTime * 0.1f * speed_ * tr_.forward, Space.Self);
+    tr_.localPosition += (Time.deltaTime * 0.1f) * (speed_ * tr_.forward);
   }
 
   public void receiveDamage(int dmg){

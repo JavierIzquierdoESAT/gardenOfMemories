@@ -28,15 +28,15 @@ public class Spawner : MonoBehaviour
         break;
       }
       case Direction.Left:{
-        tr_.Rotate(new Vector3(0.0f, -45.0f, 0.0f), Space.Self);
+        tr_.Rotate(new Vector3(0.0f, -90.0f, 0.0f), Space.Self);
         break;
       }
       case Direction.Right:{
-        tr_.Rotate(new Vector3(0.0f, 45.0f, 0.0f), Space.Self);
+        tr_.Rotate(new Vector3(0.0f, 90.0f, 0.0f), Space.Self);
         break;
       }
       case Direction.Backwards:{
-        tr_.Rotate(new Vector3(0.0f, 90.0f, 0.0f), Space.Self);
+        tr_.Rotate(new Vector3(0.0f, 180.0f, 0.0f), Space.Self);
         break;
       }
     }

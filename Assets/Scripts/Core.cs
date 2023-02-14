@@ -21,7 +21,7 @@ public class Core : MonoBehaviour
 
     public void damageCore(int dmg)
     {
-        if (health_ >= 0 && !core_died_)
+        if (health_ > dmg && !core_died_)
         {
             health_ -= dmg;
         }
