@@ -153,6 +153,7 @@ MonoBehaviour:
   animator_: {fileID: 5866666021423383479}
   mesh: {fileID: 919132148567769975}
   buildings: []
+  isBuilding_: 0
 --- !u!143 &1467085774
 CharacterController:
   m_ObjectHideFlags: 0
@@ -244,13 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: e04870ab666b15042bad8ac387c51aba, type: 2}
     - target: {fileID: 5866666021909216657, guid: d86cf7841a5715c43a4eb7ae26c6813b, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'Bind_Hips'\n\tTransform 'Bind_Spine1'\n\tTransform
-        'Bind_Spine2'\n\tTransform 'Bind_RightHandIndex3'\n\tTransform 'Bind_LeftHandMiddle1'\n\tTransform
-        'Bind_LeftForeArm'\n\tTransform 'Bind_LeftHandRing3'\n\tTransform 'Bind_LeftLeg'\n\tTransform
-        'Bind_LeftUpLeg'\n\tTransform 'Bind_LeftHandRing2'\n\tand more ...\n\tFrom
-        animation clip 'Walk_Animation_Player'"
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d86cf7841a5715c43a4eb7ae26c6813b, type: 3}

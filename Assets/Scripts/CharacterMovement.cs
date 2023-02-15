@@ -26,6 +26,7 @@ public class CharacterMovement : MonoBehaviour
     private bool isDemolishOpen;
 
     private bool walking_ = false;
+    [SerializeField]private bool isBuilding_ = false;
 
     private const float inputTimer = 0.3f;
     private float timer = 0;
@@ -60,22 +61,24 @@ public class CharacterMovement : MonoBehaviour
     {
         //MOVEMENT
         timer -= Time.deltaTime;
+        if(!isBuilding_){
 
-        Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f , Input.GetAxisRaw("Vertical")).normalized;
-        cc.Move(move * Time.deltaTime * maxSpeed);
+          Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f , Input.GetAxisRaw("Vertical")).normalized;
+          cc.Move(move * Time.deltaTime * maxSpeed);
+
+
+          //ROTATION
+          if (move.magnitude > 0)
+          {
+              walking_ = true;
+              mesh.transform.rotation = Quaternion.Lerp(mesh.transform.rotation, Quaternion.LookRotation(move), Time.deltaTime * rotationSpeed);
+          }else{
+            walking_ = false;
+          }
+        }
 
         Vector3 gravity = new Vector3(0.0f, -9.8f, 0.0f);
         cc.Move(gravity * Time.deltaTime);
-
-        //ROTATION
-        if (move.magnitude > 0)
-        {
-            walking_ = true;
-            mesh.transform.rotation = Quaternion.Lerp(mesh.transform.rotation, Quaternion.LookRotation(move), Time.deltaTime * rotationSpeed);
-        }else{
-          walking_ = false;
-        }
-
 
         audio_manager_.isWalking = walking_;
         animator_.SetBool("IsMoving", walking_);
@@ -168,6 +171,7 @@ public class CharacterMovement : MonoBehaviour
         {
             if (AvailableBuilding(hud_info_.resources_inv_, buildings[type].GetComponent<Construction>().cost_))
             {
+                StartCoroutine(TriggerBuildAnimation(1.5f));
                 interactionTile.attachedBuilding = Instantiate(buildings[type], interactionTile.gameObject.transform).GetComponent<Construction>();
                 hud_info_.resources_inv_ -= interactionTile.attachedBuilding.cost_;
                 showBuildMenu(false);
@@ -219,6 +223,14 @@ public class CharacterMovement : MonoBehaviour
             isDemolishOpen = false;
             hud_info_.demolishMenu.gameObject.SetActive(false);
         }
+    }
+
+    IEnumerator TriggerBuildAnimation(float time){
+      isBuilding_ = true;
+      animator_.SetBool("IsBuilding", true);
+      yield return new WaitForSeconds(time);
+      animator_.SetBool("IsBuilding", false);
+      isBuilding_ = false;
     }
 
 

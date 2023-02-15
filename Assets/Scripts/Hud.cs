@@ -11,6 +11,8 @@ public class Hud : MonoBehaviour
     public Vector3 resources_inv_;
     public int core_health_;
 
+    public Slider healthSlider_;
+
 
     [Header("Internal Dependencies")]
     public TextMeshProUGUI resource_one_;
@@ -33,6 +35,7 @@ public class Hud : MonoBehaviour
         resource_two_.text = resources_inv_.y.ToString();
         resource_three_.text = resources_inv_.z.ToString();
         core_status_.text = core_health_.ToString();
+        healthSlider_.value = (core_health_ / 20.0f);
 
         if (Input.GetKeyDown(KeyCode.N))
         {
